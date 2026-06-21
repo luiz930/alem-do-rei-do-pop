@@ -116,8 +116,8 @@ const schema = {
       <div class="shell print-grid">
         <div class="reveal-item"><p class="hope-label">Leve a mensagem com você</p><h2 id="card-heading" class="hope-title light">Um lembrete para o futuro.</h2><p>Imprima, compartilhe ou deixe este cartão onde alguém possa encontrá-lo.</p><button id="print-card" type="button" class="hope-button">Imprimir cartão <span aria-hidden="true">⎙</span></button></div>
         <div class="a6-card reveal-item" id="printable-card">
-          <div class="card-front"><span class="mini-earth" aria-hidden="true"></span><small>Além do Rei do Pop apresenta</small><h3>Heal the<br/>World Project</h3><p>O futuro começa com uma escolha.</p></div>
-          <div class="card-back"><p>Minha escolha para hoje:</p><span class="write-line"></span><p>Quem posso ajudar?</p><span class="write-line"></span><div class="qr-placeholder" aria-label="Espaço reservado para QR Code"><span>QR</span><small>aponte para o projeto</small></div></div>
+          <div class="card-front"><span class="mini-earth" aria-hidden="true"></span><small>Além do Rei do Pop apresenta</small><h3>Heal the<br/>World Project</h3><p id="card-front-copy">O futuro começa com uma escolha.</p></div>
+          <div class="card-back"><p id="card-back-label">Minha escolha para hoje:</p><span class="write-line"></span><p id="card-back-question">Quem posso ajudar?</p><span class="write-line"></span><div class="qr-placeholder" aria-label="Espaço reservado para QR Code"><span>QR</span><small>aponte para o projeto</small></div></div>
         </div>
       </div>
     </section>
@@ -148,22 +148,39 @@ const schema = {
   const missionText = document.querySelector<HTMLElement>('#mission-text');
   const missionCount = document.querySelector<HTMLElement>('#mission-count');
   const missionButton = document.querySelector<HTMLButtonElement>('#generate-mission');
+  const cardFrontCopy = document.querySelector<HTMLElement>('#card-front-copy');
+  const cardBackLabel = document.querySelector<HTMLElement>('#card-back-label');
+  const cardBackQuestion = document.querySelector<HTMLElement>('#card-back-question');
   let currentMission = -1;
+
+  const applyMission = (index: number) => {
+    const mission = missions[index];
+    missionText?.classList.add('changing');
+    window.setTimeout(() => {
+      if (missionTitle) missionTitle.textContent = mission.title;
+      if (missionText) missionText.textContent = mission.text;
+      if (missionCount) missionCount.textContent = `Missão ${String(index + 1).padStart(2, '0')} de ${missions.length}`;
+      if (cardFrontCopy) cardFrontCopy.textContent = `${mission.title} · Heal the World`;
+      if (cardBackLabel) cardBackLabel.textContent = `Minha escolha para hoje: ${mission.title}`;
+      if (cardBackQuestion) cardBackQuestion.textContent = mission.text;
+      missionText?.classList.remove('changing');
+    }, 180);
+  };
 
   missionButton?.addEventListener('click', () => {
     let nextMission: number;
     do nextMission = Math.floor(Math.random() * missions.length); while (nextMission === currentMission);
     currentMission = nextMission;
-    missionText?.classList.add('changing');
-    window.setTimeout(() => {
-      if (missionTitle) missionTitle.textContent = missions[nextMission].title;
-      if (missionText) missionText.textContent = missions[nextMission].text;
-      if (missionCount) missionCount.textContent = `Missão ${String(nextMission + 1).padStart(2, '0')} de ${missions.length}`;
-      missionText?.classList.remove('changing');
-    }, 180);
+    applyMission(nextMission);
   });
 
-  document.querySelector('#print-card')?.addEventListener('click', () => window.print());
+  document.querySelector('#print-card')?.addEventListener('click', () => {
+    if (currentMission < 0) {
+      currentMission = Math.floor(Math.random() * missions.length);
+      applyMission(currentMission);
+    }
+    window.setTimeout(() => window.print(), 240);
+  });
 
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
