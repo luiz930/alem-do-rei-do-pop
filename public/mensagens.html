@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Envie e leia mensagens de homenagem de fãs de Michael Jackson.">
+    <meta name="theme-color" content="#08090c">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./assets/messages.css">
+    <title>Mensagens de fãs | Além do Rei do Pop</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="./">Além do Rei do Pop</a>
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="./">Início</a><a href="./historia/">História</a><a href="./discografia/">Discografia</a><a href="./legado/">Legado</a><a href="./mensagens.html" aria-current="page">Mensagens</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="shell">
+          <p class="eyebrow">Vozes dos fãs</p>
+          <h1>Uma homenagem também vive nas pessoas.</h1>
+          <p class="hero-copy">Compartilhe uma lembrança, um agradecimento ou uma mensagem sobre como a arte de Michael Jackson marcou sua vida. Toda mensagem passa por moderação antes de aparecer nesta página.</p>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="shell">
+          <div class="layout">
+            <div class="panel">
+              <p class="eyebrow">Antes de enviar</p>
+              <h2>Escreva com cuidado</h2>
+              <p class="lead">As mensagens são públicas somente após aprovação. O envio não garante publicação.</p>
+              <p class="notice"><strong>Proteja sua privacidade:</strong> não envie telefone, endereço, documentos, dados de saúde, informações financeiras ou outros dados sensíveis.</p>
+              <p class="lead">Conteúdo ofensivo, publicidade, excesso de links ou tentativas de inserir HTML e scripts serão rejeitados.</p>
+            </div>
+
+            <form id="fan-message-form" class="panel" novalidate>
+              <h2>Envie sua mensagem</h2>
+              <div class="field-grid">
+                <label class="field" for="name">Nome
+                  <input id="name" name="name" type="text" maxlength="80" autocomplete="name" required>
+                </label>
+                <label class="field" for="city">Cidade <span>(opcional)</span>
+                  <input id="city" name="city" type="text" maxlength="80" autocomplete="address-level2">
+                </label>
+                <label class="field field-full" for="message">Mensagem
+                  <textarea id="message" name="message" maxlength="1000" required></textarea>
+                  <span class="field-note"><span id="message-count">0</span>/1000 caracteres</span>
+                </label>
+                <label class="honeypot" for="website" aria-hidden="true">Não preencha este campo
+                  <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </label>
+              </div>
+              <p class="notice">Sua mensagem será armazenada para moderação e somente será exibida depois de aprovada.</p>
+              <div class="form-actions">
+                <button class="button" type="submit">Enviar para moderação</button>
+                <p id="form-status" class="status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+
+          <section class="messages-section" aria-labelledby="approved-heading">
+            <div class="section-heading">
+              <div><p class="eyebrow">Memória coletiva</p><h2 id="approved-heading">Mensagens aprovadas</h2></div>
+            </div>
+            <div id="message-cards" class="cards" aria-live="polite"><p class="empty">Carregando mensagens...</p></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="shell">Este é um site feito por fãs, sem afiliação oficial com o espólio, gravadoras, empresas ou representantes de Michael Jackson.</div></footer>
+    <script src="./assets/messages.js" defer></script>
+  </body>
+</html>

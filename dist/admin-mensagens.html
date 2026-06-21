@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#08090c">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./assets/messages.css">
+    <title>Moderação de mensagens | Além do Rei do Pop</title>
+  </head>
+  <body>
+    <header class="site-header"><div class="shell header-inner"><a class="brand" href="./">Além do Rei do Pop</a></div></header>
+    <main class="admin-main">
+      <div class="shell">
+        <p class="eyebrow">Área restrita</p>
+        <h1>Moderação de mensagens</h1>
+        <p class="lead">A senha é enviada diretamente à Function e não é armazenada no navegador.</p>
+        <form id="admin-login" class="admin-login">
+          <label class="field" for="admin-secret">Senha de administrador
+            <input id="admin-secret" name="secret" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="button" type="submit">Carregar pendências</button>
+        </form>
+        <p id="admin-status" class="status" role="status" aria-live="polite"></p>
+        <section id="pending-list" class="admin-list" aria-label="Mensagens pendentes"></section>
+      </div>
+    </main>
+    <script src="./assets/admin-messages.js" defer></script>
+  </body>
+</html>

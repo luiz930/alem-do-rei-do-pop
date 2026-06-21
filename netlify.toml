@@ -4,3 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20.19.5"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

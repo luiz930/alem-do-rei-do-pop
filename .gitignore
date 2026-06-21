@@ -2,3 +2,7 @@ node_modules/
 .astro/
 .DS_Store
 *.log
+deno.lock
+
+# Local Netlify folder
+.netlify
