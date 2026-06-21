@@ -36,7 +36,8 @@ O formulário de mensagem é somente visual e não transmite informações. O HT
 
 ## Publicação
 
-- **Vercel/Netlify:** conecte o repositório, use `npm run build` e diretório de saída `dist`.
+- **Netlify:** conecte o repositório. O arquivo `netlify.toml` configura automaticamente `npm run build` e o diretório de publicação `dist`.
+- **Vercel:** use `npm run build` e diretório de saída `dist`.
 - **GitHub Pages:** configure uma Action para Astro. Se publicar em subdiretório, defina `base` e a URL real em `astro.config.mjs`.
 
 Substitua o domínio de exemplo em `astro.config.mjs` e o e-mail placeholder da página de remoção antes de publicar.
