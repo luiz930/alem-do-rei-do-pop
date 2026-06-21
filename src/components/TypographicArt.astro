@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'portrait' | 'album' | 'dance' | 'stage' | 'heart' | 'archive' | 'moonwalk';
+  variant?: 'portrait' | 'album' | 'dance' | 'stage' | 'heart' | 'archive' | 'moonwalk' | 'thriller' | 'billie' | 'beatit' | 'criminal' | 'blackwhite';
   label: string;
   title?: string;
   index?: number;
@@ -127,6 +127,90 @@ const patterns = {
     '     MMMM    2 0 0 9    MMMM',
     '        M O O N W A L K',
     '           R I T M O'
+  ],
+  thriller: [
+    '            MMMMMMMMMMMM',
+    '         MMMMJJJJJJJJJJMMMM',
+    '      MMMJJJJ7777777777JJJMMM',
+    '    MMJJJ7777MMMMMMMMMM7777JJMM',
+    '   MMJJ7777MM          MM7777JMM',
+    '  MMJJ777MM   1 9 8 3   MM777JMM',
+    '  MMJJ77MM    JJJJJJJJ    MM77JMM',
+    '  MMJJ77MM   JJ  JJ  JJ   MM77JMM',
+    '  MMJJ77MM   JJ  JJ  JJ   MM77JMM',
+    '  MMJJ77MM     JJJJJJ     MM77JMM',
+    '   MMJJ77MM   Z Z Z Z   MM77JMM',
+    '    MMJJ7777MMMMMMMMMM7777JJMM',
+    '      MMMJJJJ7777777777JJJMMM',
+    '         MMMMJJJJJJJJJJMMMM',
+    '            MMMMMMMMMMMM'
+  ],
+  billie: [
+    '                JJJJJJJJJJ',
+    '            JJJJJJJJJJJJJJJJ',
+    '          JJ77777777777777JJ',
+    '        JJ7777MMMMMMMM7777JJ',
+    '       JJ777MM        MM777JJ',
+    '      JJ77MM    1 9 8 3 MM77JJ',
+    '      JJ77MM     MMMMM    MM77JJ',
+    '     JJ77MM   MM  J  MM    MM77JJ',
+    '     JJ77MM  MM   J   MM   MM77JJ',
+    '     JJ77MM  MM   J   MM   MM77JJ',
+    '     JJ77MM   MM  J  MM    MM77JJ',
+    '      JJ77MM    MMMMM    MM77JJ',
+    '       JJ77MM        MM77JJ',
+    '         JJJJMM   2009   MMJJ',
+    '            JJJJ  J J J  JJJJ'
+  ],
+  beatit: [
+    '           MMMMM     JJJJJ',
+    '        MMMMJJJJJ   JJJJJMMMM',
+    '      MMMJJJ77777J J77777JJJMMM',
+    '    MMJJJ7777MMMMM   MMMMM7777JJMM',
+    '   MMJJ77MM     J     J     MM77JMM',
+    '  MMJJ77MM   JJJJJ   JJJJJ   MM77JMM',
+    '  MMJJ77MM  JJ   MM MM   JJ  MM77JMM',
+    '  MMJJ77MM   J    MM MM    J  MM77JMM',
+    '  MMJJ77MM    JJJJ  M M  JJJJ  MM77JMM',
+    '   MMJJ77MM        1 9 8 3    MM77JMM',
+    '    MMJJ7777MMMMMMMMMMMMMM7777JJMM',
+    '      MMMJJJJ777777777777JJJMMM',
+    '        MMMMJJJJJJJJJJJJMMMM',
+    '           MMMMMMMM  MMMMMM',
+    '              2 0 0 9'
+  ],
+  criminal: [
+    '             MMMMMMMMMM',
+    '         MMMMJJJJJJJJJJMMMM',
+    '      MMMJJJJ777777777777JJJMMM',
+    '    MMJJJ7777MMMMMMMMMMMM7777JMM',
+    '   MMJJ77MM   F E D O R A  MM77JMM',
+    '  MMJJ77MM      1 9 8 8      MM77JMM',
+    '  MMJJ77MM   MM  JJJJJ  MM   MM77JMM',
+    '  MMJJ77MM  MM  J     J  MM  MM77JMM',
+    '  MMJJ77MM  MM   JJJJJJ   MM  MM77JMM',
+    '  MMJJ77MM   MM    J     MM   MM77JMM',
+    '   MMJJ77MM    MMMM   MMMM   MM77JMM',
+    '    MMJJ7777MMMMMMMMMMMMMMMM7777JJMM',
+    '      MMMJJJJ777777777777JJJMMM',
+    '         MMMMJJJJJJJJJJMMMM',
+    '             MMMMMMMMMM'
+  ],
+  blackwhite: [
+    '            MMMMMMMM     JJJJJJJJ',
+    '         MMMMJJJJJJJJ MMMM777777JJ',
+    '      MMMJJJJ77777777JJJJ7777777JMM',
+    '    MMJJJ7777MMMMMMMM7777MMMM777JMM',
+    '   MMJJ77MM   BLACK   MM   WHITE MM',
+    '  MMJJ77MM    1 9 9 1  MM  2 0 0 9',
+    '  MMJJ77MM   MMMMMMMMMM MM MMMMMMM',
+    '  MMJJ77MM  MM   J  J   MM MM    M',
+    '  MMJJ77MM  MM   J  J   MM MM    M',
+    '   MMJJ77MM   MMMM  MMMM   MM   MM',
+    '    MMJJ7777MMMMMMMMMMMMMMMM7777JJ',
+    '      MMMJJJJ777777777777JJJMMM',
+    '         MMMMJJJJJJJJJJMMMM',
+    '            MMMMMMMM'
   ]
 };
 
@@ -186,7 +270,7 @@ const number = String(index + 1).padStart(2, '0');
     z-index: 1;
     margin: 0;
     color: var(--art-accent);
-    font: 700 clamp(.42rem, 1.05vw, .82rem)/1.02 ui-monospace, SFMono-Regular, Consolas, monospace;
+    font: 700 clamp(.48rem, 1.18vw, .9rem)/.98 ui-monospace, SFMono-Regular, Consolas, monospace;
     letter-spacing: -.055em;
     text-align: center;
     text-shadow: 0 0 20px rgb(199 166 91 / .3);
@@ -194,6 +278,12 @@ const number = String(index + 1).padStart(2, '0');
     transition: transform .7s ease, color .7s ease;
   }
   .type-art:hover .type-art__drawing { transform: scale(1.025); color: #f2dfae; }
+  .type-art--wide .type-art__drawing { font-size: clamp(.54rem, 1.28vw, .98rem); line-height: .96; }
+  .type-art--thriller { --art-accent: #d3af66; background: radial-gradient(circle at 50% 38%, rgb(211 175 102 / .18), transparent 33%), linear-gradient(155deg, #1a1012, #08090c 66%); }
+  .type-art--billie { --art-accent: #d8bb74; background: radial-gradient(circle at 52% 35%, rgb(216 187 116 / .18), transparent 30%), linear-gradient(155deg, #10141d, #08090c 66%); }
+  .type-art--beatit { --art-accent: #e0bf75; background: radial-gradient(circle at 50% 38%, rgb(224 191 117 / .16), transparent 32%), linear-gradient(155deg, #101a18, #08090c 66%); }
+  .type-art--criminal { --art-accent: #d7b26c; background: radial-gradient(circle at 50% 36%, rgb(215 178 108 / .16), transparent 30%), linear-gradient(155deg, #17120e, #08090c 66%); }
+  .type-art--blackwhite { --art-accent: #efdca0; background: radial-gradient(circle at 50% 36%, rgb(239 220 160 / .16), transparent 30%), linear-gradient(155deg, #11151f, #08090c 66%); }
   .type-art__meta {
     position: absolute;
     right: 1rem;
