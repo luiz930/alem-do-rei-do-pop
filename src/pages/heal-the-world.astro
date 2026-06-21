@@ -65,8 +65,9 @@ const schema = {
         <h2 id="mission-heading" class="hope-title light">Sua missão de hoje</h2>
         <div class="mission-card reveal-item" aria-live="polite" aria-atomic="true">
           <div class="mission-icon" aria-hidden="true">✦</div>
-          <p id="mission-text">Um pequeno gesto pode ser o começo de algo imenso.</p>
-          <span id="mission-count">Missão disponível</span>
+          <p id="mission-title">Missão disponível</p>
+          <p id="mission-text">Clique no botão para receber uma missão ligada à ideia de Heal the World.</p>
+          <span id="mission-count">10 missões curadas</span>
         </div>
         <button id="generate-mission" class="hope-button" type="button">Gerar uma missão <span aria-hidden="true">✦</span></button>
       </div>
@@ -131,28 +132,19 @@ const schema = {
 
 <script>
   const missions = [
-    'Sorria para alguém.', 'Doe um alimento.', 'Plante uma árvore.', 'Ajude uma pessoa idosa.', 'Desligue uma luz desnecessária.',
-    'Economize água durante o banho.', 'Escreva uma carta de agradecimento.', 'Pratique empatia em uma conversa.', 'Peça desculpas com sinceridade.', 'Perdoe alguém.',
-    'Ouça alguém sem interromper.', 'Faça um elogio verdadeiro.', 'Compartilhe um conhecimento útil.', 'Recolha um lixo encontrado na rua.', 'Faça uma boa ação sem contar para ninguém.',
-    'Ligue para alguém que sente sua falta.', 'Doe roupas em bom estado.', 'Use uma garrafa reutilizável.', 'Caminhe em vez de usar o carro hoje.', 'Agradeça a quem torna seu dia melhor.',
-    'Separe corretamente o lixo reciclável.', 'Ofereça seu lugar a quem precisa.', 'Deixe o celular de lado durante uma conversa.', 'Compartilhe uma refeição.', 'Cuide de uma planta.',
-    'Evite desperdiçar comida hoje.', 'Ensine algo com paciência.', 'Reconheça o trabalho de alguém.', 'Pergunte a alguém como ela realmente está.', 'Defenda uma pessoa tratada injustamente.',
-    'Consuma de um pequeno produtor local.', 'Recuse um plástico descartável.', 'Doe um livro que marcou sua vida.', 'Leia sobre uma realidade diferente da sua.', 'Escreva três coisas pelas quais sente gratidão.',
-    'Compartilhe uma mensagem de esperança.', 'Dê passagem no trânsito.', 'Tenha paciência em uma fila.', 'Alimente um animal abandonado com segurança.', 'Apoie uma causa de sua comunidade.',
-    'Apague uma mensagem antes de responder com raiva.', 'Convide alguém que está sozinho para conversar.', 'Aprenda o nome de quem trabalha perto de você.', 'Elogie uma ideia, não uma aparência.', 'Repare um objeto em vez de descartá-lo.',
-    'Use apenas a água de que precisa.', 'Compre somente o necessário hoje.', 'Compartilhe seu guarda-chuva.', 'Ofereça ajuda antes que peçam.', 'Dê uma nova chance a alguém.',
-    'Respeite um ponto de vista diferente.', 'Celebre a conquista de outra pessoa.', 'Devolva algo melhor do que recebeu.', 'Deixe um lugar mais limpo do que encontrou.', 'Doe sangue, se puder.',
-    'Cadastre-se como doador de medula.', 'Evite fazer julgamentos precipitados.', 'Diga a alguém por que ela é importante.', 'Faça uma refeição sem telas.', 'Pratique dez minutos de silêncio consciente.',
-    'Ajude um colega com uma tarefa.', 'Indique uma oportunidade a alguém.', 'Compartilhe crédito por um bom resultado.', 'Admita quando não souber algo.', 'Escolha palavras que acolham.',
-    'Responda com gentileza a uma crítica.', 'Aprenda um gesto básico em Libras.', 'Respeite a faixa de pedestres.', 'Dê preferência ao transporte coletivo.', 'Desconecte aparelhos fora de uso.',
-    'Reduza o tempo do banho em dois minutos.', 'Reaproveite a água sempre que possível.', 'Evite imprimir algo desnecessário.', 'Plante flores para os polinizadores.', 'Não compartilhe uma notícia sem verificar.',
-    'Interrompa um boato com informação responsável.', 'Doe materiais escolares.', 'Leia uma história para uma criança.', 'Ensine uma habilidade gratuitamente.', 'Prepare uma refeição para alguém.',
-    'Apoie o trabalho de um artista local.', 'Escreva uma avaliação positiva e honesta.', 'Agradeça a um educador.', 'Visite alguém que esteja se recuperando.', 'Pergunte antes de oferecer conselhos.',
-    'Respeite seus próprios limites hoje.', 'Descanse sem culpa por alguns minutos.', 'Troque uma reclamação por uma proposta.', 'Ajude a tornar um espaço acessível.', 'Inclua uma pessoa nova no grupo.',
-    'Compreenda antes de responder.', 'Compartilhe uma ferramenta que não usa.', 'Regue uma árvore em um dia quente.', 'Escolha uma refeição de menor impacto ambiental.', 'Valorize quem cuida dos outros.',
-    'Seja gentil consigo mesmo.', 'Transforme cinco minutos livres em ajuda.', 'Pergunte como pode contribuir em casa.', 'Escreva uma intenção para o futuro.', 'Comece hoje uma mudança que você vem adiando.'
+    { title: 'Unidade', text: 'Converse com alguém que pensa diferente de você e procure um ponto em comum antes de discordar.' },
+    { title: 'Crianças', text: 'Apoie hoje uma ação concreta voltada para crianças, com tempo, recurso ou atenção.' },
+    { title: 'Empatia', text: 'Ouça alguém sem interromper e sem tentar resolver tudo na primeira resposta.' },
+    { title: 'Planeta', text: 'Reduza um desperdício visível hoje: água, energia, plástico ou comida.' },
+    { title: 'Gratidão', text: 'Agradeça de forma direta a uma pessoa que melhorou o seu dia ou trabalho.' },
+    { title: 'Paz', text: 'Evite alimentar uma briga, um boato ou uma reação impulsiva no dia de hoje.' },
+    { title: 'Arte que une', text: 'Compartilhe uma música, dança ou obra que inspire cuidado em vez de cinismo.' },
+    { title: 'Justiça', text: 'Defenda alguém que esteja sendo tratado de forma injusta, mesmo que seja só com palavras.' },
+    { title: 'Cuidado', text: 'Faça uma coisa útil para alguém que esteja cansado, sobrecarregado ou sozinho.' },
+    { title: 'Legado', text: 'Transforme uma intenção boa em um hábito repetível para a próxima semana.' }
   ];
 
+  const missionTitle = document.querySelector<HTMLElement>('#mission-title');
   const missionText = document.querySelector<HTMLElement>('#mission-text');
   const missionCount = document.querySelector<HTMLElement>('#mission-count');
   const missionButton = document.querySelector<HTMLButtonElement>('#generate-mission');
@@ -164,8 +156,9 @@ const schema = {
     currentMission = nextMission;
     missionText?.classList.add('changing');
     window.setTimeout(() => {
-      if (missionText) missionText.textContent = missions[nextMission];
-      if (missionCount) missionCount.textContent = `Missão ${String(nextMission + 1).padStart(3, '0')} · de ${missions.length}`;
+      if (missionTitle) missionTitle.textContent = missions[nextMission].title;
+      if (missionText) missionText.textContent = missions[nextMission].text;
+      if (missionCount) missionCount.textContent = `Missão ${String(nextMission + 1).padStart(2, '0')} de ${missions.length}`;
       missionText?.classList.remove('changing');
     }, 180);
   });
@@ -225,7 +218,8 @@ const schema = {
   .mission-card { position:relative; width:min(100%,760px); min-height:300px; margin:3rem auto 2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem; border:1px solid #90f5dc35; border-radius:2rem; background:#ffffff0b; box-shadow:inset 0 1px #ffffff19,0 30px 100px #0005; backdrop-filter:blur(14px); }
   .mission-card::before { content:''; position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(135deg,#fff3,transparent 35%,#53deb722); pointer-events:none; mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude; padding:1px; }
   .mission-icon { color:#77eacb; font-size:2.2rem; text-shadow:0 0 25px #53deb7; }
-  #mission-text { margin:1.5rem 0; color:#eefcf9; font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.4rem); line-height:1.05; transition:opacity .18s,transform .18s; }
+  #mission-title { margin:1.2rem 0 .75rem; color:#9af3df; font-size:.76rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; }
+  #mission-text { margin:0 0 1.25rem; max-width:44rem; color:#eefcf9; font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); line-height:1.05; transition:opacity .18s,transform .18s; }
   #mission-text.changing { opacity:0; transform:translateY(8px); }
   #mission-count { color:#ffffff70; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; }
   .section-heading { margin-bottom:3.5rem; }
