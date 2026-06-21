@@ -1,6 +1,16 @@
 ---
-import TypographicArt from './TypographicArt.astro';
+const base = import.meta.env.BASE_URL;
 const { video } = Astro.props;
-const artVariant = video.artVariant ?? 'dance';
+const image = `${base}${video.image.replace(/^\//, '')}`;
 ---
-<article class="card-dark"><div class="mb-6"><TypographicArt variant={artVariant} ratio="wide" label={`Composição tipográfica para o videoclipe ${video.title}`} title={`${video.title} • ${video.year}`} /></div><div class="flex flex-wrap items-start justify-between gap-3"><h2 class="font-display text-3xl">{video.title}</h2><span class="rounded-full border border-gold/30 px-3 py-1 text-xs text-gold">{video.year}</span></div><p class="mt-5 leading-7 text-white/60">{video.analysis}</p><div class="mt-5 grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-2"><div><h3 class="text-sm text-gold">Impacto visual</h3><p class="mt-2 text-sm leading-6 text-white/50">{video.impact}</p></div><div><h3 class="text-sm text-gold">Curiosidade</h3><p class="mt-2 text-sm leading-6 text-white/50">{video.fact}</p></div></div></article>
+<article class="card-dark group">
+  <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+    <img src={image} alt={video.imageAlt} class="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.02]" loading="lazy" decoding="async" />
+    <figcaption class="border-t border-white/10 px-4 py-3 text-[.62rem] uppercase tracking-[.24em] text-white/35">
+      <a href={video.imageSource} target="_blank" rel="noopener noreferrer" class="text-champagne underline decoration-gold/40 underline-offset-4">Fonte licenciada</a>
+    </figcaption>
+  </figure>
+  <div class="flex flex-wrap items-start justify-between gap-3"><h2 class="font-display text-3xl">{video.title}</h2><span class="rounded-full border border-gold/30 px-3 py-1 text-xs text-gold">{video.year}</span></div>
+  <p class="mt-5 leading-7 text-white/60">{video.analysis}</p>
+  <div class="mt-5 grid gap-4 border-t border-white/10 pt-5 sm:grid-cols-2"><div><h3 class="text-sm text-gold">Impacto visual</h3><p class="mt-2 text-sm leading-6 text-white/50">{video.impact}</p></div><div><h3 class="text-sm text-gold">Curiosidade</h3><p class="mt-2 text-sm leading-6 text-white/50">{video.fact}</p></div></div>
+</article>

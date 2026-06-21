@@ -1,13 +1,19 @@
 ---
-import TypographicArt from './TypographicArt.astro';
 const base = import.meta.env.BASE_URL;
 const internalUrl = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const heroImage = `${base}assets/licensed/michael-jackson-in-1988.jpg`;
+const heroSource = 'https://commons.wikimedia.org/wiki/File:Michael_Jackson_in_1988.jpg';
 ---
 <section class="noise relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-ink text-white">
   <div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_70%_25%,rgba(199,166,91,.18),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(29,61,100,.45),transparent_35%)]"></div>
   <div class="absolute left-1/2 top-[-15rem] -z-10 h-[48rem] w-56 -translate-x-1/2 rotate-12 bg-gradient-to-b from-white/20 via-gold/10 to-transparent blur-3xl"></div>
   <div class="shell grid min-h-[calc(100vh-4rem)] items-center gap-12 py-24 lg:grid-cols-[1.1fr_.9fr]">
     <div class="reveal"><p class="eyebrow">Memória • arte • humanidade</p><h1 class="display mt-6 max-w-4xl text-6xl font-semibold sm:text-7xl lg:text-8xl">Além do<br/><span class="text-champagne">Rei do Pop</span></h1><p class="mt-7 max-w-2xl text-lg leading-8 text-white/65">Uma homenagem independente ao legado, à arte e à humanidade de Michael Jackson.</p><div class="mt-9 flex flex-wrap gap-4"><a href={internalUrl('/historia')} class="btn-primary">Conhecer a história</a><a href={internalUrl('/mensagens.html')} class="btn-secondary">Enviar mensagem de fã</a></div><p class="mt-7 text-xs uppercase tracking-[.2em] text-white/35">Site de fãs não oficial</p></div>
-    <div class="mx-auto w-full max-w-lg"><TypographicArt variant="portrait" label="Retrato tipográfico autoral inspirado em Michael Jackson, formado por letras M e J e números de sua trajetória" title="MICHAEL JACKSON" /></div>
+    <figure class="mx-auto w-full max-w-lg overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/5 shadow-2xl shadow-black/30">
+      <img src={heroImage} alt="Michael Jackson em um retrato licenciado usado no site como imagem principal" class="aspect-[4/5] w-full object-cover object-top" loading="eager" decoding="async" />
+      <figcaption class="border-t border-white/10 px-5 py-3 text-[.62rem] uppercase tracking-[.24em] text-white/40">
+        Imagem licenciada via <a href={heroSource} target="_blank" rel="noopener noreferrer" class="text-champagne underline decoration-gold/40 underline-offset-4">Wikimedia Commons</a>
+      </figcaption>
+    </figure>
   </div>
 </section>

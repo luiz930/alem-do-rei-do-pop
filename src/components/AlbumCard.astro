@@ -1,5 +1,17 @@
 ---
-import TypographicArt from './TypographicArt.astro';
-const { album, index } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const { album } = Astro.props;
+const image = `${base}${album.image.replace(/^\//, '')}`;
 ---
-<article class="card-dark group flex h-full flex-col"><div class="mb-6"><TypographicArt variant="album" label={`Capa tipográfica autoral para representar o álbum ${album.name}`} title={`${album.name} • ${album.year}`} index={index} /></div><div class="flex items-baseline justify-between gap-3"><h2 class="font-display text-3xl">{album.name}</h2><span class="text-sm text-gold">{album.year}</span></div><p class="mt-4 leading-7 text-white/60">{album.description}</p><dl class="mt-5 space-y-4 border-t border-white/10 pt-5 text-sm"><div><dt class="text-gold">Impacto cultural</dt><dd class="mt-1 leading-6 text-white/55">{album.impact}</dd></div><div><dt class="text-gold">Curiosidade</dt><dd class="mt-1 leading-6 text-white/55">{album.fact}</dd></div></dl>{album.link && <a class="mt-auto pt-6 text-sm text-champagne underline decoration-gold/50 underline-offset-4" href={album.link} target="_blank" rel="noopener noreferrer">Consultar fonte oficial <span class="sr-only">(abre em nova aba)</span></a>}</article>
+<article class="card-dark group flex h-full flex-col">
+  <figure class="mb-6 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
+    <img src={image} alt={album.imageAlt} class="aspect-[4/3] w-full object-contain bg-[#090b10] p-4 transition duration-700 group-hover:scale-[1.02]" loading="lazy" decoding="async" />
+    <figcaption class="border-t border-white/10 px-4 py-3 text-[.62rem] uppercase tracking-[.24em] text-white/35">
+      <a href={album.imageSource} target="_blank" rel="noopener noreferrer" class="text-champagne underline decoration-gold/40 underline-offset-4">Fonte licenciada</a>
+    </figcaption>
+  </figure>
+  <div class="flex items-baseline justify-between gap-3"><h2 class="font-display text-3xl">{album.name}</h2><span class="text-sm text-gold">{album.year}</span></div>
+  <p class="mt-4 leading-7 text-white/60">{album.description}</p>
+  <dl class="mt-5 space-y-4 border-t border-white/10 pt-5 text-sm"><div><dt class="text-gold">Impacto cultural</dt><dd class="mt-1 leading-6 text-white/55">{album.impact}</dd></div><div><dt class="text-gold">Curiosidade</dt><dd class="mt-1 leading-6 text-white/55">{album.fact}</dd></div></dl>
+  {album.link && <a class="mt-auto pt-6 text-sm text-champagne underline decoration-gold/50 underline-offset-4" href={album.link} target="_blank" rel="noopener noreferrer">Consultar fonte oficial <span class="sr-only">(abre em nova aba)</span></a>}
+</article>
