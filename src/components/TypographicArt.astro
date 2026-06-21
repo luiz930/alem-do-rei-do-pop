@@ -1,0 +1,174 @@
+---
+interface Props {
+  variant?: 'portrait' | 'album' | 'dance' | 'stage';
+  label: string;
+  title?: string;
+  index?: number;
+  ratio?: 'square' | 'wide';
+}
+
+const {
+  variant = 'portrait',
+  label,
+  title = 'MICHAEL JACKSON',
+  index = 0,
+  ratio = 'square'
+} = Astro.props;
+
+const patterns = {
+  portrait: [
+    '          MMMMMMMMMMM',
+    '       MMMMJJJJJJJJMMMM',
+    '     MMMJJJJJJJJJJJJJMMM',
+    '    MMJJJ111JJJJJ111JJJMM',
+    '   MMJJJJ111JJJJJ111JJJJMM',
+    '   MJJJJJJJJJJJJJJJJJJJJJM',
+    '   MJJJJJJJJJ77JJJJJJJJJJM',
+    '   MMJJJJJJ777777JJJJJJJMM',
+    '    MMJJJJJJJJJJJJJJJJJMM',
+    '      MMJJJJJ999JJJJJMM',
+    '        MMMJJJJJJJMMM',
+    '          MMMMMMMMM',
+    '          JJMMMJ J',
+    '       JJJJMMMMMJJJJ',
+    '     JJJJJMMMMMMMJJJJJ',
+    '   1958  MJMJMMJM  2009'
+  ],
+  album: [
+    '          000000000',
+    '       000111111111000',
+    '     001111999999111100',
+    '    0111999999999999110',
+    '   011999777777777999110',
+    '  0199777771117777779910',
+    '  0197771111111117779910',
+    '  019771111MJ11111779910',
+    '  0197771111111117779910',
+    '  0199777771117777779910',
+    '   011999777777777999110',
+    '    0111999999999999110',
+    '     001111999999111100',
+    '       000111111111000',
+    '          000000000'
+  ],
+  dance: [
+    '             JJJJJJJJJ',
+    '          JJJJJJJJJJJJJJJ',
+    '             MMJJJ',
+    '              MM',
+    '      77777777MMM111',
+    '          77MMMM1111111',
+    '            MMMMM',
+    '            MMMMM',
+    '           MMJ JMM',
+    '          MMJ   JMM',
+    '         MMJ     JMM',
+    '        MMJ       JMM',
+    '       1983       2009',
+    '  J J J J  RHYTHM  M M M M'
+  ],
+  stage: [
+    '  1 9 5 8       M J       2 0 0 9',
+    '       777777777777777777777',
+    '         77777777777777777',
+    '           7777777777777',
+    '             777777777',
+    '               77777',
+    '                 7',
+    '                MMM',
+    '               MMMMM',
+    '              MMJ JMM',
+    '             MMJ   JMM',
+    '            MMJ     JMM',
+    '    111111111111111111111111111',
+    '  00000000000000000000000000000'
+  ]
+};
+
+const art = patterns[variant].join('\n');
+const number = String(index + 1).padStart(2, '0');
+---
+
+<div class:list={['type-art', `type-art--${variant}`, ratio === 'wide' && 'type-art--wide']} role="img" aria-label={label}>
+  <div class="type-art__stream" aria-hidden="true">MICHAEL • JACKSON • 1958 • 2009 • KING • POP • RHYTHM • DANCE • MUSIC •</div>
+  <pre class="type-art__drawing" aria-hidden="true">{art}</pre>
+  <div class="type-art__meta" aria-hidden="true">
+    <span>{number}</span>
+    <strong>{title}</strong>
+  </div>
+</div>
+
+<style>
+  .type-art {
+    --art-accent: #c7a65b;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    aspect-ratio: 1;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgb(199 166 91 / .2);
+    border-radius: .9rem;
+    background:
+      radial-gradient(circle at 50% 43%, rgb(199 166 91 / .15), transparent 34%),
+      linear-gradient(145deg, #111e32, #08090c 68%);
+    box-shadow: inset 0 0 70px rgb(0 0 0 / .36);
+  }
+  .type-art--wide { aspect-ratio: 4 / 3; border-radius: 1.5rem; }
+  .type-art--album { --art-accent: #f2dfae; }
+  .type-art--dance { --art-accent: #d1b469; background: radial-gradient(circle at 70% 35%, rgb(199 166 91 / .2), transparent 32%), #08090c; }
+  .type-art--stage { background: linear-gradient(160deg, #132139, #08090c 70%); }
+  .type-art::before {
+    content: '';
+    position: absolute;
+    inset: 7%;
+    z-index: -1;
+    border: 1px solid rgb(199 166 91 / .14);
+    transition: transform .7s ease, border-color .7s ease;
+  }
+  .type-art:hover::before { transform: scale(.97); border-color: rgb(199 166 91 / .42); }
+  .type-art__stream {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    color: rgb(242 223 174 / .055);
+    font: 700 clamp(.65rem, 1.2vw, 1rem)/1.9 ui-monospace, SFMono-Regular, Consolas, monospace;
+    letter-spacing: .22em;
+    overflow-wrap: anywhere;
+    transform: rotate(-8deg) scale(1.15);
+  }
+  .type-art__drawing {
+    z-index: 1;
+    margin: 0;
+    color: var(--art-accent);
+    font: 700 clamp(.38rem, 1.25vw, .78rem)/1.03 ui-monospace, SFMono-Regular, Consolas, monospace;
+    letter-spacing: -.055em;
+    text-align: center;
+    text-shadow: 0 0 20px rgb(199 166 91 / .3);
+    white-space: pre;
+    transition: transform .7s ease, color .7s ease;
+  }
+  .type-art:hover .type-art__drawing { transform: scale(1.025); color: #f2dfae; }
+  .type-art__meta {
+    position: absolute;
+    right: 1rem;
+    bottom: .85rem;
+    left: 1rem;
+    z-index: 2;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgb(255 255 255 / .34);
+    font: 600 .56rem/1.2 Inter, sans-serif;
+    letter-spacing: .22em;
+  }
+  .type-art__meta span { color: rgb(199 166 91 / .6); font-family: Georgia, serif; font-size: 1.5rem; letter-spacing: 0; }
+  .type-art__meta strong { max-width: 70%; text-align: right; }
+  @media (max-width: 420px) {
+    .type-art__drawing { font-size: 1.8vw; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .type-art::before, .type-art__drawing { transition: none; }
+  }
+</style>
