@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'portrait' | 'album' | 'dance' | 'stage';
+  variant?: 'portrait' | 'album' | 'dance' | 'stage' | 'heart' | 'archive' | 'moonwalk';
   label: string;
   title?: string;
   index?: number;
@@ -82,6 +82,46 @@ const patterns = {
     '            MMJ     JMM',
     '    111111111111111111111111111',
     '  00000000000000000000000000000'
+  ],
+  heart: [
+    '        MMMMM     JJJJJ',
+    '     MMMMMMMMMM JJJJJJJJJ',
+    '   MMMMMMMMMMMMMJJJJJJJJJJ',
+    '  MMMMM FAS MMMMM FAS JJJJJ',
+    '  MMMM  1958  MMMM  2009 JJ',
+    '   MMMM  AMOR  MMMM  ARTE J',
+    '     MMMM     JJJJ     MM',
+    '       MMMM   JJJJ   MM',
+    '         MMMM JJJJ MM',
+    '           MMMMMMMM',
+    '             MMMM',
+    '              MM'
+  ],
+  archive: [
+    '  0 1 0 2 0 3 0 4 0 5 0 6',
+    '  M  J  M  J  M  J  M  J',
+    '  1 9 5 8  •  1 9 7 9  •',
+    '  1 9 8 2  •  1 9 8 3  •',
+    '  1 9 8 7  •  1 9 9 1  •',
+    '  1 9 9 2  •  2 0 0 9',
+    '  A R Q U I V O   P O P',
+    '  L E T R A S   E   N U M E R O S',
+    '  M J  M J  M J  M J  M J',
+    '  0 0 1 0 0 2 0 0 3 0 0 4'
+  ],
+  moonwalk: [
+    '            1 9 8 3',
+    '         MMMMMMMM',
+    '       MMMM    MMMM',
+    '     MMMM        MMMM',
+    '    MM  J        J  MM',
+    '   MM    J      J    MM',
+    '  MM      J    J      MM',
+    ' MM        J  J        MM',
+    'MM          JJ          MM',
+    '  2 0 0 9      M J',
+    '      M O O N W A L K',
+    '         R I T M O'
   ]
 };
 
