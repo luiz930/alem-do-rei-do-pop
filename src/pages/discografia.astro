@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionTitle from '../components/SectionTitle.astro'; import AlbumCard from '../components/AlbumCard.astro'; import albums from '../data/albums.json';
+---
+<BaseLayout title="Discografia comentada | Além do Rei do Pop" description="Comentários autorais sobre álbuns marcantes da carreira de Michael Jackson."><section class="py-24"><div class="shell"><SectionTitle eyebrow="Discografia comentada" title="Álbuns como mundos próprios" text="Análises breves e autorais. Não disponibilizamos faixas, letras, downloads nem capas oficiais." /><div class="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-3">{albums.map((album,index) => <AlbumCard album={album} index={index} />)}</div></div></section></BaseLayout>

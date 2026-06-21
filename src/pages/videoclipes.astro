@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionTitle from '../components/SectionTitle.astro'; import VideoAnalysisCard from '../components/VideoAnalysisCard.astro'; import videos from '../data/videos.json';
+---
+<BaseLayout title="Videoclipes históricos | Além do Rei do Pop" description="Análises autorais de videoclipes que transformaram a linguagem visual da música pop."><section class="bg-navy py-24"><div class="shell"><SectionTitle eyebrow="Videoclipes históricos" title="Quando a música ganhou outra tela" text="Leituras críticas sem incorporar ou hospedar vídeos. Links oficiais podem ser adicionados futuramente aos dados locais." /><div class="mt-16 grid gap-7 lg:grid-cols-2">{videos.map(video => <VideoAnalysisCard video={video} />)}</div></div></section></BaseLayout>

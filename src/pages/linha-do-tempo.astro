@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionTitle from '../components/SectionTitle.astro'; import Timeline from '../components/Timeline.astro'; import timeline from '../data/timeline.json';
+---
+<BaseLayout title="Linha do tempo | Além do Rei do Pop" description="Marcos da trajetória artística, cultural e humanitária de Michael Jackson."><section class="noise py-24"><div class="shell"><SectionTitle eyebrow="Linha do tempo" title="Décadas em movimento" text="Uma seleção de marcos para localizar fases criativas. A cronologia não pretende resumir toda a história." /><div class="mt-20"><Timeline events={timeline} /></div></div></section></BaseLayout>

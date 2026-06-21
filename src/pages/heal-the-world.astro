@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const description = 'Um convite para transformar amor, esperança e consciência em pequenas atitudes capazes de construir um futuro melhor.';
+const reflections = [
+  ['01', 'Como estou ajudando a construir o futuro?'],
+  ['02', 'Quem precisa da minha ajuda hoje?'],
+  ['03', 'Que impacto minhas palavras causam?'],
+  ['04', 'Estou espalhando esperança ou medo?'],
+  ['05', 'Se todos agissem como eu, o mundo seria melhor?']
+];
+const timeline = ['Hoje', 'Pequenas ações', 'Consciência coletiva', 'Transformação', 'Futuro melhor'];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Heal the World Project',
+  description,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@type': 'WebSite', name: 'Além do Rei do Pop', url: Astro.site }
+};
+---
+
+<BaseLayout title="Heal the World Project | Além do Rei do Pop" description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+
+  <div class="heal-page">
+    <section class="hero-hope" aria-labelledby="hero-title">
+      <div class="stars" aria-hidden="true"></div>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="earth-wrap" aria-hidden="true">
+        <div class="earth">
+          <span class="land land-one"></span><span class="land land-two"></span><span class="land land-three"></span>
+        </div>
+        <span class="orbit"></span>
+      </div>
+      <div class="shell relative z-10 flex min-h-[calc(100svh-4rem)] items-center py-24">
+        <div class="hero-copy reveal-item max-w-3xl">
+          <p class="hope-label">Uma missão para todos nós</p>
+          <h1 id="hero-title">Heal the<br/><em>World</em> Project</h1>
+          <p class="hero-subtitle">O futuro da humanidade começa nas escolhas que fazemos hoje.</p>
+          <a href="#manifesto" class="hope-button">Começar minha missão <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <p class="scroll-note" aria-hidden="true">Explore o manifesto</p>
+    </section>
+
+    <section id="manifesto" class="light-section section-space">
+      <div class="shell manifesto-grid">
+        <div class="reveal-item">
+          <p class="hope-label dark">Manifesto</p>
+          <h2 class="hope-title">O progresso começa por dentro.</h2>
+          <p class="lead-copy">Um mundo mais justo não surge de um único grande gesto. Ele nasce das decisões silenciosas que repetimos todos os dias.</p>
+        </div>
+        <div class="principles">
+          <article class="principle reveal-item"><span>01</span><div><h3>Escolhas importam</h3><p>Pequenas atitudes ganham força quando se tornam parte de uma cultura de cuidado.</p></div></article>
+          <article class="principle reveal-item"><span>02</span><div><h3>O futuro é humano</h3><p>A tecnologia amplia possibilidades, mas somente a consciência define como iremos usá-las.</p></div></article>
+          <article class="principle reveal-item"><span>03</span><div><h3>Consciência é evolução</h3><p>Escutar, compreender e agir com responsabilidade é o avanço de que mais precisamos.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission-section section-space" aria-labelledby="mission-heading">
+      <div class="shell text-center">
+        <p class="hope-label">Transforme intenção em ação</p>
+        <h2 id="mission-heading" class="hope-title light">Sua missão de hoje</h2>
+        <div class="mission-card reveal-item" aria-live="polite" aria-atomic="true">
+          <div class="mission-icon" aria-hidden="true">✦</div>
+          <p id="mission-text">Um pequeno gesto pode ser o começo de algo imenso.</p>
+          <span id="mission-count">Missão disponível</span>
+        </div>
+        <button id="generate-mission" class="hope-button" type="button">Gerar uma missão <span aria-hidden="true">✦</span></button>
+      </div>
+    </section>
+
+    <section class="light-section section-space">
+      <div class="shell">
+        <div class="section-heading reveal-item"><p class="hope-label dark">Pausa consciente</p><h2 class="hope-title">Perguntas que movem o mundo</h2><p>Não é preciso ter todas as respostas. É preciso coragem para fazer as perguntas certas.</p></div>
+        <div class="reflection-grid">
+          {reflections.map(([number, question]) => <article class="reflection-card reveal-item"><span>{number}</span><h3>{question}</h3><div aria-hidden="true">↗</div></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="future-section section-space" aria-labelledby="future-heading">
+      <div class="shell">
+        <div class="section-heading center reveal-item"><p class="hope-label">O futuro da humanidade</p><h2 id="future-heading" class="hope-title light">Toda transformação tem um começo.</h2></div>
+        <ol class="future-timeline">
+          {timeline.map((item, index) => <li class="reveal-item"><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong>{index < timeline.length - 1 && <i aria-hidden="true">↓</i>}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="light-section section-space" aria-labelledby="world-heading">
+      <div class="shell world-grid">
+        <div class="reveal-item"><p class="hope-label dark">Um planeta, bilhões de escolhas</p><h2 id="world-heading" class="hope-title">A bondade não conhece fronteiras.</h2><p class="lead-copy">Imagine milhões de pessoas praticando pequenos atos de bondade ao redor do planeta.</p></div>
+        <div class="world-map reveal-item">
+          <svg viewBox="0 0 900 450" role="img" aria-label="Mapa-múndi estilizado com pontos luminosos distribuídos pelos continentes">
+            <defs><radialGradient id="dot"><stop stop-color="#fff"/><stop offset=".25" stop-color="#62e6c5"/><stop offset="1" stop-color="#22c99a" stop-opacity="0"/></radialGradient></defs>
+            <g class="continents"><path d="M72 103l43-38 83 9 31 32 46 16 20 45-35 37-22 63-37 26-33-69-38-20-18-59z"/><path d="M263 276l53 15 34 63-28 81-33-41-12-60z"/><path d="M397 101l67-28 69 17 40-17 94 34 95 4 72 45-35 33-71-8-44 31-50-14-51 48-49-2-32-45-65-9-40-49z"/><path d="M461 226l72 8 42 48-15 94-48 53-41-58-31-91z"/><path d="M719 306l54-25 66 37-16 50-73 11-43-35z"/></g>
+            <g class="map-dots">{[[141,126],[210,164],[178,239],[306,322],[327,380],[446,128],[508,164],[533,264],[512,337],[598,138],[653,180],[704,145],[760,176],[793,327],[735,341]].map(([cx,cy],i)=><circle cx={cx} cy={cy} r="18" fill="url(#dot)" style={`animation-delay:${i * -.22}s`} />)}</g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact-strip" aria-label="Impacto simbólico">
+      <div class="shell impact-grid">
+        <div class="impact-item reveal-item"><span aria-hidden="true">🌱</span><p><strong>1 boa ação</strong> pode inspirar centenas.</p></div>
+        <div class="impact-divider" aria-hidden="true"></div>
+        <div class="impact-item reveal-item"><span aria-hidden="true">🌍</span><p><strong>Imagine esse movimento</strong> acontecendo diariamente.</p></div>
+      </div>
+    </section>
+
+    <section class="print-section section-space" aria-labelledby="card-heading">
+      <div class="shell print-grid">
+        <div class="reveal-item"><p class="hope-label">Leve a mensagem com você</p><h2 id="card-heading" class="hope-title light">Um lembrete para o futuro.</h2><p>Imprima, compartilhe ou deixe este cartão onde alguém possa encontrá-lo.</p><button id="print-card" type="button" class="hope-button">Imprimir cartão <span aria-hidden="true">⎙</span></button></div>
+        <div class="a6-card reveal-item" id="printable-card">
+          <div class="card-front"><span class="mini-earth" aria-hidden="true"></span><small>Além do Rei do Pop apresenta</small><h3>Heal the<br/>World Project</h3><p>O futuro começa com uma escolha.</p></div>
+          <div class="card-back"><p>Minha escolha para hoje:</p><span class="write-line"></span><p>Quem posso ajudar?</p><span class="write-line"></span><div class="qr-placeholder" aria-label="Espaço reservado para QR Code"><span>QR</span><small>aponte para o projeto</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inspiration-section section-space">
+      <div class="shell narrow reveal-item"><span class="quote-mark" aria-hidden="true">“</span><blockquote>Este projeto foi inspirado na mensagem de amor, esperança e responsabilidade coletiva presente na obra de Michael Jackson.</blockquote><p>Seu objetivo é transformar inspiração em ação.</p></div>
+    </section>
+
+    <section class="project-closing"><div class="shell"><p>O futuro não será construído apenas pela tecnologia.<br/><strong>Será construído pelas pessoas.</strong></p><span>Heal the World Project · {new Date().getFullYear()}</span></div></section>
+  </div>
+</BaseLayout>
+
+<script>
+  const missions = [
+    'Sorria para alguém.', 'Doe um alimento.', 'Plante uma árvore.', 'Ajude uma pessoa idosa.', 'Desligue uma luz desnecessária.',
+    'Economize água durante o banho.', 'Escreva uma carta de agradecimento.', 'Pratique empatia em uma conversa.', 'Peça desculpas com sinceridade.', 'Perdoe alguém.',
+    'Ouça alguém sem interromper.', 'Faça um elogio verdadeiro.', 'Compartilhe um conhecimento útil.', 'Recolha um lixo encontrado na rua.', 'Faça uma boa ação sem contar para ninguém.',
+    'Ligue para alguém que sente sua falta.', 'Doe roupas em bom estado.', 'Use uma garrafa reutilizável.', 'Caminhe em vez de usar o carro hoje.', 'Agradeça a quem torna seu dia melhor.',
+    'Separe corretamente o lixo reciclável.', 'Ofereça seu lugar a quem precisa.', 'Deixe o celular de lado durante uma conversa.', 'Compartilhe uma refeição.', 'Cuide de uma planta.',
+    'Evite desperdiçar comida hoje.', 'Ensine algo com paciência.', 'Reconheça o trabalho de alguém.', 'Pergunte a alguém como ela realmente está.', 'Defenda uma pessoa tratada injustamente.',
+    'Consuma de um pequeno produtor local.', 'Recuse um plástico descartável.', 'Doe um livro que marcou sua vida.', 'Leia sobre uma realidade diferente da sua.', 'Escreva três coisas pelas quais sente gratidão.',
+    'Compartilhe uma mensagem de esperança.', 'Dê passagem no trânsito.', 'Tenha paciência em uma fila.', 'Alimente um animal abandonado com segurança.', 'Apoie uma causa de sua comunidade.',
+    'Apague uma mensagem antes de responder com raiva.', 'Convide alguém que está sozinho para conversar.', 'Aprenda o nome de quem trabalha perto de você.', 'Elogie uma ideia, não uma aparência.', 'Repare um objeto em vez de descartá-lo.',
+    'Use apenas a água de que precisa.', 'Compre somente o necessário hoje.', 'Compartilhe seu guarda-chuva.', 'Ofereça ajuda antes que peçam.', 'Dê uma nova chance a alguém.',
+    'Respeite um ponto de vista diferente.', 'Celebre a conquista de outra pessoa.', 'Devolva algo melhor do que recebeu.', 'Deixe um lugar mais limpo do que encontrou.', 'Doe sangue, se puder.',
+    'Cadastre-se como doador de medula.', 'Evite fazer julgamentos precipitados.', 'Diga a alguém por que ela é importante.', 'Faça uma refeição sem telas.', 'Pratique dez minutos de silêncio consciente.',
+    'Ajude um colega com uma tarefa.', 'Indique uma oportunidade a alguém.', 'Compartilhe crédito por um bom resultado.', 'Admita quando não souber algo.', 'Escolha palavras que acolham.',
+    'Responda com gentileza a uma crítica.', 'Aprenda um gesto básico em Libras.', 'Respeite a faixa de pedestres.', 'Dê preferência ao transporte coletivo.', 'Desconecte aparelhos fora de uso.',
+    'Reduza o tempo do banho em dois minutos.', 'Reaproveite a água sempre que possível.', 'Evite imprimir algo desnecessário.', 'Plante flores para os polinizadores.', 'Não compartilhe uma notícia sem verificar.',
+    'Interrompa um boato com informação responsável.', 'Doe materiais escolares.', 'Leia uma história para uma criança.', 'Ensine uma habilidade gratuitamente.', 'Prepare uma refeição para alguém.',
+    'Apoie o trabalho de um artista local.', 'Escreva uma avaliação positiva e honesta.', 'Agradeça a um educador.', 'Visite alguém que esteja se recuperando.', 'Pergunte antes de oferecer conselhos.',
+    'Respeite seus próprios limites hoje.', 'Descanse sem culpa por alguns minutos.', 'Troque uma reclamação por uma proposta.', 'Ajude a tornar um espaço acessível.', 'Inclua uma pessoa nova no grupo.',
+    'Compreenda antes de responder.', 'Compartilhe uma ferramenta que não usa.', 'Regue uma árvore em um dia quente.', 'Escolha uma refeição de menor impacto ambiental.', 'Valorize quem cuida dos outros.',
+    'Seja gentil consigo mesmo.', 'Transforme cinco minutos livres em ajuda.', 'Pergunte como pode contribuir em casa.', 'Escreva uma intenção para o futuro.', 'Comece hoje uma mudança que você vem adiando.'
+  ];
+
+  const missionText = document.querySelector<HTMLElement>('#mission-text');
+  const missionCount = document.querySelector<HTMLElement>('#mission-count');
+  const missionButton = document.querySelector<HTMLButtonElement>('#generate-mission');
+  let currentMission = -1;
+
+  missionButton?.addEventListener('click', () => {
+    let nextMission: number;
+    do nextMission = Math.floor(Math.random() * missions.length); while (nextMission === currentMission);
+    currentMission = nextMission;
+    missionText?.classList.add('changing');
+    window.setTimeout(() => {
+      if (missionText) missionText.textContent = missions[nextMission];
+      if (missionCount) missionCount.textContent = `Missão ${String(nextMission + 1).padStart(3, '0')} · de ${missions.length}`;
+      missionText?.classList.remove('changing');
+    }, 180);
+  });
+
+  document.querySelector('#print-card')?.addEventListener('click', () => window.print());
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal-item').forEach((element) => revealObserver.observe(element));
+
+  const earth = document.querySelector<HTMLElement>('.earth-wrap');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  window.addEventListener('scroll', () => {
+    if (earth && !reduceMotion.matches && window.scrollY < window.innerHeight) earth.style.transform = `translate3d(0, ${window.scrollY * .08}px, 0)`;
+  }, { passive: true });
+</script>
+
+<style>
+  :global(body) { overflow-x: hidden; }
+  .heal-page { --deep:#04172a; --ocean:#063659; --sky:#7fd9ff; --emerald:#34d5a6; --soft-gold:#d9c58b; --cloud:#f5f8f7; font-family: Inter, sans-serif; background:var(--deep); color:white; }
+  .hero-hope { position:relative; min-height:calc(100svh - 4rem); overflow:hidden; background:radial-gradient(circle at 72% 48%, #0c4e70 0, #072a49 25%, #04172a 52%, #020b15 100%); }
+  .stars { position:absolute; inset:-5%; opacity:.52; background-image:radial-gradient(circle, #fff 0 1px, transparent 1.5px),radial-gradient(circle, #7fd9ff 0 1px, transparent 1.5px); background-size:97px 97px,151px 151px; background-position:20px 30px,70px 80px; mask-image:linear-gradient(to right,transparent 0,#000 40%); animation:star-drift 24s ease-in-out infinite alternate; }
+  .hero-glow { position:absolute; width:46rem; height:46rem; right:-9rem; top:50%; border-radius:50%; transform:translateY(-50%); background:#3ebea9; filter:blur(110px); opacity:.13; }
+  .earth-wrap { position:absolute; width:min(55vw,760px); aspect-ratio:1; right:-7vw; top:50%; margin-top:min(-27vw,-380px); will-change:transform; }
+  .earth { position:absolute; inset:8%; overflow:hidden; border-radius:50%; background:radial-gradient(circle at 30% 25%,#39a3d7 0,#087098 29%,#075376 53%,#03243f 78%); box-shadow:-35px 10px 80px #0009,inset -70px -25px 110px #00101acc,inset 20px 15px 50px #c9f7ff55,0 0 30px #91efff66,0 0 100px #24bfa255; animation:float 8s ease-in-out infinite; }
+  .earth::after { content:''; position:absolute; inset:0; background:repeating-radial-gradient(ellipse at 30% 40%,#fff0 0 18px,#fff2 20px 22px,#fff0 24px 42px); opacity:.45; transform:rotate(-18deg); }
+  .land { position:absolute; display:block; background:linear-gradient(135deg,#7bc971,#218e68 65%,#126749); filter:drop-shadow(0 0 8px #b5ffba55); opacity:.9; }
+  .land-one { width:38%; height:27%; left:15%; top:19%; border-radius:62% 38% 53% 47% / 42% 31% 69% 58%; transform:rotate(-12deg); }
+  .land-two { width:20%; height:38%; left:40%; top:45%; border-radius:62% 38% 80% 20% / 23% 57% 43% 77%; transform:rotate(16deg); }
+  .land-three { width:29%; height:20%; right:-5%; top:30%; border-radius:70% 30% 54% 46%; }
+  .orbit { position:absolute; inset:1%; border:1px solid #8de8ff26; border-radius:50%; transform:rotate(-24deg) scaleY(.4); box-shadow:0 0 15px #8de8ff22; }
+  .hero-copy { text-shadow:0 2px 24px #000; }
+  .hope-label { margin:0; color:var(--emerald); font-size:.7rem; font-weight:600; letter-spacing:.3em; text-transform:uppercase; }
+  .hope-label.dark { color:#078467; }
+  .hero-hope h1 { margin:1.4rem 0; max-width:800px; font-family:'Cormorant Garamond',serif; font-size:clamp(4.4rem,9vw,8.8rem); font-weight:500; letter-spacing:-.055em; line-height:.72; }
+  .hero-hope h1 em { color:#a7f1e0; font-weight:500; }
+  .hero-subtitle { max-width:590px; margin:2.4rem 0 2rem; color:#d8e7ed; font-size:clamp(1.1rem,2vw,1.4rem); line-height:1.7; }
+  .hope-button { display:inline-flex; align-items:center; gap:.8rem; border:1px solid #9aeedc55; border-radius:999px; background:linear-gradient(135deg,#53deb7,#23b990); padding:.95rem 1.4rem; color:#031b18; font-size:.85rem; font-weight:700; box-shadow:0 12px 40px #1dd6a429; transition:transform .3s,box-shadow .3s,filter .3s; }
+  .hope-button:hover { transform:translateY(-3px); box-shadow:0 18px 45px #1dd6a44d; filter:brightness(1.08); }
+  .scroll-note { position:absolute; bottom:1.8rem; left:50%; z-index:2; margin:0; transform:translateX(-50%); color:#ffffff70; font-size:.65rem; letter-spacing:.22em; text-transform:uppercase; }
+  .section-space { padding:clamp(6rem,11vw,10rem) 0; }
+  .light-section { background:var(--cloud); color:#102d38; }
+  .manifesto-grid { display:grid; gap:5rem; align-items:start; }
+  .hope-title { margin:1rem 0 1.5rem; max-width:760px; font-family:'Cormorant Garamond',serif; font-size:clamp(3.3rem,6vw,6rem); font-weight:500; letter-spacing:-.04em; line-height:.92; }
+  .hope-title.light { color:#fff; }
+  .lead-copy,.section-heading>p:last-child { max-width:620px; color:#4f6870; font-size:1.1rem; line-height:1.85; }
+  .principles { border-top:1px solid #123b4926; }
+  .principle { display:grid; grid-template-columns:3rem 1fr; gap:1rem; padding:2rem 0; border-bottom:1px solid #123b4926; }
+  .principle>span { color:#16866d; font-size:.7rem; letter-spacing:.15em; }
+  .principle h3 { margin:0 0 .5rem; font-family:'Cormorant Garamond',serif; font-size:1.85rem; }
+  .principle p { margin:0; color:#5c7178; line-height:1.7; }
+  .mission-section { position:relative; overflow:hidden; background:radial-gradient(circle at 50% 55%,#0b5470,#04233d 45%,#031526 78%); }
+  .mission-section::before { content:''; position:absolute; inset:0; opacity:.15; background-image:linear-gradient(#74e6d51a 1px,transparent 1px),linear-gradient(90deg,#74e6d51a 1px,transparent 1px); background-size:55px 55px; mask-image:radial-gradient(circle,#000,transparent 68%); }
+  .mission-card { position:relative; width:min(100%,760px); min-height:300px; margin:3rem auto 2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem; border:1px solid #90f5dc35; border-radius:2rem; background:#ffffff0b; box-shadow:inset 0 1px #ffffff19,0 30px 100px #0005; backdrop-filter:blur(14px); }
+  .mission-card::before { content:''; position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(135deg,#fff3,transparent 35%,#53deb722); pointer-events:none; mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude; padding:1px; }
+  .mission-icon { color:#77eacb; font-size:2.2rem; text-shadow:0 0 25px #53deb7; }
+  #mission-text { margin:1.5rem 0; color:#eefcf9; font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.4rem); line-height:1.05; transition:opacity .18s,transform .18s; }
+  #mission-text.changing { opacity:0; transform:translateY(8px); }
+  #mission-count { color:#ffffff70; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; }
+  .section-heading { margin-bottom:3.5rem; }
+  .section-heading.center { display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .reflection-grid { display:grid; gap:1rem; }
+  .reflection-card { position:relative; min-height:230px; padding:1.8rem; overflow:hidden; border:1px solid #183b4726; border-radius:1.2rem; background:white; box-shadow:0 15px 40px #0f3a4610; transition:transform .4s,border-color .4s,box-shadow .4s; }
+  .reflection-card:hover { transform:translateY(-7px); border-color:#20aa8977; box-shadow:0 24px 50px #0f645b1c; }
+  .reflection-card>span { color:#129071; font-size:.65rem; letter-spacing:.2em; }
+  .reflection-card h3 { margin:3.5rem 0 1rem; max-width:290px; font-family:'Cormorant Garamond',serif; font-size:1.7rem; font-weight:600; line-height:1.05; }
+  .reflection-card>div { position:absolute; right:1.5rem; bottom:1.2rem; color:#179b7b; }
+  .future-section { background:#051b30; }
+  .future-timeline { max-width:620px; margin:4rem auto 0; padding:0; list-style:none; }
+  .future-timeline li { position:relative; display:grid; grid-template-columns:4rem 1fr; align-items:center; min-height:105px; border-top:1px solid #87ead329; }
+  .future-timeline li:last-child { border-bottom:1px solid #87ead329; }
+  .future-timeline span { color:#58d9b8; font-size:.65rem; letter-spacing:.2em; }
+  .future-timeline strong { font-family:'Cormorant Garamond',serif; font-size:clamp(1.7rem,4vw,2.6rem); font-weight:500; }
+  .future-timeline i { position:absolute; right:0; color:#54d8b7; font-style:normal; opacity:.65; }
+  .world-grid { display:grid; gap:4rem; align-items:center; }
+  .world-map { padding:1rem; border:1px solid #0a5b5c22; border-radius:2rem; background:radial-gradient(circle,#e5fff8,#edf4f2 70%); }
+  .world-map svg { width:100%; height:auto; }
+  .continents { fill:#0f4c5a; opacity:.82; }
+  .map-dots circle { animation:pulse 2.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+  .impact-strip { padding:4rem 0; border-block:1px solid #66d9bb26; background:#06253a; }
+  .impact-grid { display:grid; gap:2rem; }
+  .impact-item { display:flex; gap:1.5rem; align-items:center; justify-content:center; }
+  .impact-item>span { font-size:2.5rem; }
+  .impact-item p { max-width:300px; margin:0; color:#bbd2d8; line-height:1.5; }
+  .impact-item strong { display:block; color:#fff; font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:600; }
+  .impact-divider { display:none; background:#ffffff1c; }
+  .print-section { background:linear-gradient(145deg,#041524,#092e43); }
+  .print-grid { display:grid; gap:5rem; align-items:center; }
+  .print-grid>div:first-child>p:not(.hope-label) { max-width:510px; margin-bottom:2rem; color:#aac0c8; line-height:1.8; }
+  .a6-card { display:grid; grid-template-columns:1fr 1fr; width:min(100%,620px); aspect-ratio:2.1/1; margin:auto; overflow:hidden; border-radius:1.2rem; color:#102d38; box-shadow:0 35px 80px #0006; }
+  .card-front,.card-back { position:relative; padding:clamp(1.2rem,3vw,2rem); }
+  .card-front { background:linear-gradient(145deg,#fff,#e8f5f1); }
+  .card-front small { font-size:.45rem; letter-spacing:.18em; text-transform:uppercase; }
+  .card-front h3 { margin:2rem 0 .7rem; font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,2.8rem); line-height:.8; }
+  .card-front p,.card-back p { font-size:.65rem; }
+  .mini-earth { position:absolute; top:1rem; right:1rem; width:2.2rem; height:2.2rem; border-radius:50%; background:radial-gradient(circle at 35% 30%,#6cdfc0,#087185 50%,#052f4c); box-shadow:0 0 20px #38ccaa77; }
+  .card-back { background:#082d42; color:white; }
+  .write-line { display:block; height:1px; margin:1rem 0 1.5rem; background:#ffffff40; }
+  .qr-placeholder { position:absolute; right:1rem; bottom:1rem; display:grid; width:4rem; aspect-ratio:1; place-content:center; border:1px dashed #70d9c5; color:#70d9c5; text-align:center; }
+  .qr-placeholder span { font-weight:700; }
+  .qr-placeholder small { font-size:.38rem; }
+  .inspiration-section { background:#f4f0e7; color:#19353d; text-align:center; }
+  .narrow { max-width:940px; }
+  .quote-mark { color:#199a79; font-family:Georgia,serif; font-size:5rem; line-height:.5; }
+  blockquote { margin:1.5rem auto; font-family:'Cormorant Garamond',serif; font-size:clamp(2.3rem,5vw,4.7rem); line-height:1.06; }
+  .inspiration-section p { color:#547078; letter-spacing:.08em; }
+  .project-closing { padding:6rem 0; background:#020c14; text-align:center; }
+  .project-closing p { margin:0 0 2rem; color:#b8c9ce; font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,4rem); line-height:1.15; }
+  .project-closing strong { color:#8ce6ce; font-weight:500; }
+  .project-closing span { color:#ffffff45; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; }
+  .reveal-item { opacity:0; transform:translateY(24px); transition:opacity .8s ease,transform .8s ease; }
+  .reveal-item.is-visible { opacity:1; transform:none; }
+  @keyframes float { 50% { transform:translateY(-12px) rotate(.8deg); } }
+  @keyframes pulse { 50% { opacity:.35; transform:scale(.65); } }
+  @keyframes star-drift { to { transform:translate3d(-18px,12px,0); } }
+
+  @media (min-width:768px) {
+    .reflection-grid { grid-template-columns:repeat(2,1fr); }
+    .reflection-card:last-child { grid-column:span 2; }
+    .impact-grid { grid-template-columns:1fr 1px 1fr; }
+    .impact-divider { display:block; }
+  }
+  @media (min-width:1024px) {
+    .manifesto-grid,.world-grid,.print-grid { grid-template-columns:1fr 1fr; }
+    .reflection-grid { grid-template-columns:repeat(5,1fr); }
+    .reflection-card:last-child { grid-column:auto; }
+  }
+  @media (max-width:767px) {
+    .earth-wrap { width:105vw; right:-45vw; opacity:.52; }
+    .hero-copy { padding-top:8rem; }
+    .hero-hope h1 { font-size:clamp(4rem,20vw,6rem); }
+    .scroll-note { display:none; }
+    .mission-card { min-height:270px; padding:2rem 1.2rem; }
+    .a6-card { grid-template-columns:1fr; aspect-ratio:auto; max-width:330px; }
+    .card-front,.card-back { min-height:280px; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .earth,.stars,.map-dots circle { animation:none; }
+    .reveal-item { opacity:1; transform:none; transition:none; }
+    * { scroll-behavior:auto !important; }
+  }
+  @media print {
+    :global(body) { background:white !important; }
+    :global(body > *), :global(header), :global(footer), .heal-page>section:not(.print-section), .print-grid>div:first-child { display:none !important; }
+    :global(main), .heal-page, .print-section, .print-grid, #printable-card { display:block !important; }
+    .print-section { padding:0; background:white; }
+    #printable-card { width:148mm; height:105mm; margin:0 auto; border:1px solid #ccc; border-radius:0; box-shadow:none; }
+    .card-front,.card-back { float:left; box-sizing:border-box; width:74mm; height:105mm; padding:10mm; }
+    @page { size:A6 landscape; margin:0; }
+  }
+</style>

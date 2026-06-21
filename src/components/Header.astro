@@ -1,0 +1,27 @@
+---
+const base = import.meta.env.BASE_URL;
+const path = Astro.url.pathname.replace(base.replace(/\/$/, ''), '') || '/';
+const internalUrl = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const links = [
+  ['/', 'Início'], ['/historia', 'História'], ['/linha-do-tempo', 'Linha do tempo'],
+  ['/discografia', 'Discografia'], ['/videoclipes', 'Videoclipes'], ['/legado', 'Legado'],
+  ['/vozes-dos-fas', 'Vozes'], ['/galeria', 'Galeria'],
+  ['/heal-the-world', '🌍 Heal the World Project']
+];
+---
+<header class="sticky top-0 z-50 border-b border-white/10 bg-ink/90 text-white backdrop-blur-xl">
+  <div class="shell flex min-h-16 items-center justify-between gap-4">
+    <a href={base} class="font-display text-xl font-semibold tracking-wide text-champagne" aria-label="Além do Rei do Pop — início">Além do Rei do Pop</a>
+    <button id="menu-toggle" class="rounded-lg border border-white/15 p-2 lg:hidden" aria-expanded="false" aria-controls="main-nav"><span class="sr-only">Abrir menu</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <nav id="main-nav" aria-label="Navegação principal" class="absolute left-0 right-0 top-16 hidden border-b border-white/10 bg-ink p-5 lg:static lg:block lg:border-0 lg:bg-transparent lg:p-0">
+      <ul class="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-4">
+        {links.map(([href, label]) => <li><a href={internalUrl(href)} aria-current={path === href ? 'page' : undefined} class:list={['whitespace-nowrap text-sm transition hover:text-gold', href === '/heal-the-world' && 'lg:rounded-full lg:border lg:border-emerald-300/25 lg:px-3 lg:py-2', path === href ? 'text-gold' : 'text-white/75']}>{label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#main-nav');
+  button?.addEventListener('click', () => { const open = button.getAttribute('aria-expanded') === 'true'; button.setAttribute('aria-expanded', String(!open)); nav?.classList.toggle('hidden'); });
+</script>

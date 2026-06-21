@@ -1,0 +1,12 @@
+---
+const base = import.meta.env.BASE_URL;
+const internalUrl = (path: string) => `${base}${path.replace(/^\//, '')}`;
+---
+<section class="noise relative isolate min-h-[calc(100vh-4rem)] overflow-hidden bg-ink text-white">
+  <div class="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_70%_25%,rgba(199,166,91,.18),transparent_28%),radial-gradient(circle_at_20%_80%,rgba(29,61,100,.45),transparent_35%)]"></div>
+  <div class="absolute left-1/2 top-[-15rem] -z-10 h-[48rem] w-56 -translate-x-1/2 rotate-12 bg-gradient-to-b from-white/20 via-gold/10 to-transparent blur-3xl"></div>
+  <div class="shell grid min-h-[calc(100vh-4rem)] items-center gap-12 py-24 lg:grid-cols-[1.1fr_.9fr]">
+    <div class="reveal"><p class="eyebrow">Memória • arte • humanidade</p><h1 class="display mt-6 max-w-4xl text-6xl font-semibold sm:text-7xl lg:text-8xl">Além do<br/><span class="text-champagne">Rei do Pop</span></h1><p class="mt-7 max-w-2xl text-lg leading-8 text-white/65">Uma homenagem independente ao legado, à arte e à humanidade de Michael Jackson.</p><div class="mt-9 flex flex-wrap gap-4"><a href={internalUrl('/historia')} class="btn-primary">Conhecer a história</a><a href={internalUrl('/enviar-mensagem')} class="btn-secondary">Enviar mensagem de fã</a></div><p class="mt-7 text-xs uppercase tracking-[.2em] text-white/35">Site de fãs não oficial</p></div>
+    <div class="relative mx-auto aspect-square w-full max-w-lg" aria-label="Composição abstrata inspirada em palco, vinil e luz"><div class="absolute inset-[10%] rounded-full border border-gold/25 shadow-[0_0_100px_rgba(199,166,91,.14)]"></div><div class="absolute inset-[22%] animate-[spin_35s_linear_infinite] rounded-full border border-dashed border-gold/40"></div><div class="absolute inset-[35%] rounded-full bg-gold/80 shadow-[0_0_70px_rgba(199,166,91,.35)]"></div><span class="absolute left-[18%] top-[20%] h-1 w-1 rounded-full bg-champagne shadow-[100px_90px_0_#c7a65b,230px_20px_0_#f2dfae,180px_250px_0_#c7a65b,20px_220px_0_#f2dfae]"></span></div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionTitle from '../components/SectionTitle.astro';
+const sections = [
+['Infância e origem','Nascido em Gary, Indiana, em 1958, Michael cresceu em um ambiente familiar no qual ensaio, ritmo e apresentação faziam parte da rotina. A experiência precoce de palco moldou técnica, atenção ao público e uma ética de trabalho intensa.'],
+['Jackson 5','Ao lado dos irmãos, tornou-se a voz central de um grupo que combinava energia juvenil, harmonias e coreografias precisas. O sucesso levou uma família do circuito regional para a cultura de massa internacional.'],
+['Carreira solo','A maturidade artística aparece na busca por uma voz própria. Parcerias exigentes, produção minuciosa e interesse por diferentes gêneros transformaram seus álbuns em laboratórios de som, imagem e movimento.'],
+['Impacto mundial','Turnês, transmissões simultâneas e videoclipes de grande escala criaram uma presença verdadeiramente global. Seu trabalho atravessou idiomas e ajudou a redefinir as expectativas sobre um lançamento pop.'],
+['Humanitarismo','Temas de cuidado, infância, justiça e responsabilidade coletiva atravessam músicas, discursos e ações públicas. O alcance e os resultados de cada iniciativa devem ser observados com fontes específicas, sem simplificações.'],
+['Legado','Seu vocabulário de dança, sua produção vocal e sua concepção de espetáculo permanecem em circulação. O legado é uma conversa viva: envolve admiração, pesquisa, releitura e contexto.']];
+---
+<BaseLayout theme="light" title="História | Além do Rei do Pop" description="Uma narrativa autoral sobre a trajetória artística e humana de Michael Jackson."><section class="py-24"><div class="shell"><SectionTitle eyebrow="História" title="Talento, trabalho e transformação" text="Uma leitura panorâmica, construída para orientar — e incentivar novas pesquisas." /><div class="mt-20 space-y-16">{sections.map(([title,text], i) => <article class="grid gap-5 border-t border-black/15 pt-8 md:grid-cols-[10rem_1fr]"><span class="font-display text-5xl text-[#b08b3e]/40">0{i+1}</span><div><h2 class="font-display text-4xl">{title}</h2><p class="prose-copy mt-4 max-w-3xl">{text}</p></div></article>)}</div></div></section></BaseLayout>

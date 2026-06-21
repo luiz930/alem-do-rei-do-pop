@@ -1,0 +1,7 @@
+---
+interface Event { year: string; title: string; description: string; category: string; }
+const { events } = Astro.props as { events: Event[] };
+---
+<ol class="relative mx-auto max-w-4xl before:absolute before:bottom-0 before:left-[4.4rem] before:top-0 before:w-px before:bg-gold/35 sm:before:left-32">
+  {events.map((event) => <li class="relative grid grid-cols-[4.4rem_1fr] gap-6 pb-12 sm:grid-cols-[8rem_1fr]"><div class="pt-1 font-display text-2xl text-gold">{event.year}</div><span class="absolute left-[4.15rem] top-2 h-2 w-2 rounded-full bg-gold ring-4 ring-ink sm:left-[7.75rem]"></span><article class="card-dark"><p class="text-xs uppercase tracking-[.2em] text-gold">{event.category}</p><h2 class="mt-3 font-display text-3xl text-white">{event.title}</h2><p class="mt-3 leading-7 text-white/60">{event.description}</p></article></li>)}
+</ol>

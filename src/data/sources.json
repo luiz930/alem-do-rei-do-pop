@@ -1,0 +1,7 @@
+[
+  {"name":"Site oficial de Michael Jackson","description":"Referência primária para discografia, projetos e cronologia editorial. Os links externos de álbuns apontam para este domínio.","link":"https://www.michaeljackson.com/","type":"site"},
+  {"name":"Rock & Roll Hall of Fame — Michael Jackson","description":"Perfil institucional sobre carreira, inovação e reconhecimento cultural do artista.","link":"https://rockhall.com/inductees/michael-jackson/","type":"arquivo histórico"},
+  {"name":"GRAMMY — Michael Jackson","description":"Registro institucional de indicações, premiações e participações relacionadas à indústria fonográfica.","link":"https://www.grammy.com/artists/michael-jackson/13202","type":"arquivo histórico"},
+  {"name":"Moonwalk","description":"Autobiografia publicada em 1988. Serve como fonte de perspectiva pessoal, sempre lida em conjunto com registros históricos independentes.","link":"https://www.penguinrandomhouse.com/books/116693/moonwalk-by-michael-jackson/","type":"livro"},
+  {"name":"Library of Congress — Thriller","description":"Ensaio e registro da inclusão do álbum no National Recording Registry dos Estados Unidos.","link":"https://www.loc.gov/static/programs/national-recording-preservation-board/documents/Thriller.pdf","type":"arquivo histórico"}
+]

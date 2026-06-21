@@ -1,0 +1,5 @@
+---
+const { message } = Astro.props;
+const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long' }).format(new Date(`${message.date}T12:00:00`));
+---
+<blockquote class="card-dark flex h-full flex-col"><span class="font-display text-5xl leading-none text-gold/40">“</span><p class="mt-2 flex-1 text-lg leading-8 text-white/75">{message.message}</p><footer class="mt-6 border-t border-white/10 pt-5"><cite class="not-italic text-champagne">{message.name}</cite><p class="mt-1 text-xs text-white/40">{message.city}, {message.country} • {date}</p></footer></blockquote>

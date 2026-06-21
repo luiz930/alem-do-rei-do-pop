@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import SectionTitle from '../components/SectionTitle.astro'; import FanMessageCard from '../components/FanMessageCard.astro'; import messages from '../data/fan-messages.json';
+const approved = messages.filter(message => message.status === 'approved');
+const enviarMensagemUrl = `${import.meta.env.BASE_URL}enviar-mensagem`;
+---
+<BaseLayout title="Vozes dos fãs | Além do Rei do Pop" description="Mensagens aprovadas de fãs sobre memória, arte e legado."><section class="py-24"><div class="shell"><SectionTitle eyebrow="Vozes dos fãs" title="O legado também mora nas pessoas" text="Mensagens publicadas com consentimento e revisão editorial. Somente registros marcados como approved no arquivo local são exibidos." /><div class="mt-16 grid gap-7 lg:grid-cols-3">{approved.map(message => <FanMessageCard message={message} />)}</div><div class="mt-12 text-center"><a href={enviarMensagemUrl} class="btn-primary">Compartilhar uma memória</a></div></div></section></BaseLayout>
