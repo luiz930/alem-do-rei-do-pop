@@ -116,8 +116,23 @@ const schema = {
       <div class="shell print-grid">
         <div class="reveal-item"><p class="hope-label">Leve a mensagem com você</p><h2 id="card-heading" class="hope-title light">Um lembrete para o futuro.</h2><p>Imprima, compartilhe ou deixe este cartão onde alguém possa encontrá-lo.</p><button id="print-card" type="button" class="hope-button">Imprimir cartão <span aria-hidden="true">⎙</span></button></div>
         <div class="a6-card reveal-item" id="printable-card">
-          <div class="card-front"><span class="mini-earth" aria-hidden="true"></span><small>Além do Rei do Pop apresenta</small><h3>Heal the<br/>World Project</h3><p id="card-front-copy">O futuro começa com uma escolha.</p></div>
-          <div class="card-back"><p id="card-back-label">Minha escolha para hoje:</p><span class="write-line"></span><p id="card-back-question">Quem posso ajudar?</p><span class="write-line"></span><div class="qr-placeholder" aria-label="Espaço reservado para QR Code"><span>QR</span><small>aponte para o projeto</small></div></div>
+          <div class="card-front">
+            <span class="mini-earth" aria-hidden="true"></span>
+            <small>Além do Rei do Pop apresenta</small>
+            <h3>Heal the<br/>World Project</h3>
+            <p id="card-front-copy">O futuro começa com uma escolha.</p>
+            <div class="card-seal"><span>Mission Card</span><strong id="card-front-tag">Escolha do dia</strong></div>
+          </div>
+          <div class="card-back">
+            <p id="card-back-label">Minha escolha para hoje:</p>
+            <h4 id="card-back-title">Missão disponível</h4>
+            <p id="card-back-question">Quem posso ajudar?</p>
+            <div class="card-actions">
+              <div><span>Faça agora</span><strong id="card-action">Clique para gerar uma missão</strong></div>
+              <div><span>Motivo</span><strong id="card-reason">Transformar intenção em gesto concreto</strong></div>
+            </div>
+            <div class="qr-placeholder" aria-label="Espaço reservado para QR Code"><span>QR</span><small>aponte para o projeto</small></div>
+          </div>
         </div>
       </div>
     </section>
@@ -132,16 +147,16 @@ const schema = {
 
 <script>
   const missions = [
-    { title: 'Unidade', text: 'Converse com alguém que pensa diferente de você e procure um ponto em comum antes de discordar.' },
-    { title: 'Crianças', text: 'Apoie hoje uma ação concreta voltada para crianças, com tempo, recurso ou atenção.' },
-    { title: 'Empatia', text: 'Ouça alguém sem interromper e sem tentar resolver tudo na primeira resposta.' },
-    { title: 'Planeta', text: 'Reduza um desperdício visível hoje: água, energia, plástico ou comida.' },
-    { title: 'Gratidão', text: 'Agradeça de forma direta a uma pessoa que melhorou o seu dia ou trabalho.' },
-    { title: 'Paz', text: 'Evite alimentar uma briga, um boato ou uma reação impulsiva no dia de hoje.' },
-    { title: 'Arte que une', text: 'Compartilhe uma música, dança ou obra que inspire cuidado em vez de cinismo.' },
-    { title: 'Justiça', text: 'Defenda alguém que esteja sendo tratado de forma injusta, mesmo que seja só com palavras.' },
-    { title: 'Cuidado', text: 'Faça uma coisa útil para alguém que esteja cansado, sobrecarregado ou sozinho.' },
-    { title: 'Legado', text: 'Transforme uma intenção boa em um hábito repetível para a próxima semana.' }
+    { title: 'Unidade', text: 'Converse com alguém que pensa diferente de você e procure um ponto em comum antes de discordar.', action: 'Abrir espaço para ouvir antes de responder.', reason: 'Michael defendia união como linguagem pública e artística.', accent: '#62e6c5', accentSoft: '#133a42', surface: '#0d3447', tag: 'Convivência' },
+    { title: 'Crianças', text: 'Apoie hoje uma ação concreta voltada para crianças, com tempo, recurso ou atenção.', action: 'Direcionar alguma ajuda para uma criança ou instituição confiável.', reason: 'A proteção da infância aparece em várias iniciativas do projeto Heal the World.', accent: '#f0d38f', accentSoft: '#3d2f18', surface: '#2b2130', tag: 'Infância' },
+    { title: 'Empatia', text: 'Ouça alguém sem interromper e sem tentar resolver tudo na primeira resposta.', action: 'Dar atenção total por cinco minutos.', reason: 'Escuta ativa é o ponto de partida de qualquer gesto coletivo.', accent: '#86d8ff', accentSoft: '#1b3243', surface: '#0c2d46', tag: 'Escuta' },
+    { title: 'Planeta', text: 'Reduza um desperdício visível hoje: água, energia, plástico ou comida.', action: 'Escolher uma prática que economize um recurso do dia.', reason: 'Cuidar da Terra é também cuidar das pessoas que vivem nela.', accent: '#8be7a5', accentSoft: '#16352a', surface: '#0e2a22', tag: 'Terra' },
+    { title: 'Gratidão', text: 'Agradeça de forma direta a uma pessoa que melhorou o seu dia ou trabalho.', action: 'Mandar uma mensagem de gratidão agora.', reason: 'Reconhecer quem sustenta a rotina muda a atmosfera ao redor.', accent: '#d8b46a', accentSoft: '#3a2e1b', surface: '#2f2415', tag: 'Reconhecer' },
+    { title: 'Paz', text: 'Evite alimentar uma briga, um boato ou uma reação impulsiva no dia de hoje.', action: 'Responder com calma, ou não responder.', reason: 'Paz não é passividade, é disciplina emocional aplicada ao mundo.', accent: '#6fd1c8', accentSoft: '#16353c', surface: '#0b2830', tag: 'Calma' },
+    { title: 'Arte que une', text: 'Compartilhe uma música, dança ou obra que inspire cuidado em vez de cinismo.', action: 'Recomendar uma obra que motive alguém.', reason: 'A arte também é uma forma de educação afetiva.', accent: '#f3bf75', accentSoft: '#3b2914', surface: '#2b2010', tag: 'Arte' },
+    { title: 'Justiça', text: 'Defenda alguém que esteja sendo tratado de forma injusta, mesmo que seja só com palavras.', action: 'Nomear o que é injusto, sem exagero nem omissão.', reason: 'Responsabilidade social exige posicionamento claro.', accent: '#9ad0ff', accentSoft: '#18314a', surface: '#12213d', tag: 'Direitos' },
+    { title: 'Cuidado', text: 'Faça uma coisa útil para alguém que esteja cansado, sobrecarregado ou sozinho.', action: 'Oferecer ajuda prática antes de qualquer discurso.', reason: 'Cuidar é tornar a vida um pouco menos pesada para outra pessoa.', accent: '#7ce7b8', accentSoft: '#163324', surface: '#0f2b24', tag: 'Apoio' },
+    { title: 'Legado', text: 'Transforme uma intenção boa em um hábito repetível para a próxima semana.', action: 'Escolher uma mudança pequena e mantê-la por sete dias.', reason: 'Legado sem prática vira frase. Com prática, vira cultura.', accent: '#f0d28c', accentSoft: '#392f18', surface: '#231d10', tag: 'Hábito' }
   ];
 
   const missionTitle = document.querySelector<HTMLElement>('#mission-title');
@@ -150,19 +165,34 @@ const schema = {
   const missionButton = document.querySelector<HTMLButtonElement>('#generate-mission');
   const cardFrontCopy = document.querySelector<HTMLElement>('#card-front-copy');
   const cardBackLabel = document.querySelector<HTMLElement>('#card-back-label');
+  const cardBackTitle = document.querySelector<HTMLElement>('#card-back-title');
   const cardBackQuestion = document.querySelector<HTMLElement>('#card-back-question');
+  const cardAction = document.querySelector<HTMLElement>('#card-action');
+  const cardReason = document.querySelector<HTMLElement>('#card-reason');
+  const cardFrontTag = document.querySelector<HTMLElement>('#card-front-tag');
+  const missionCard = document.querySelector<HTMLElement>('.mission-card');
+  const printableCard = document.querySelector<HTMLElement>('#printable-card');
   let currentMission = -1;
 
   const applyMission = (index: number) => {
     const mission = missions[index];
     missionText?.classList.add('changing');
+    missionCard?.style.setProperty('--mission-accent', mission.accent);
+    missionCard?.style.setProperty('--mission-accent-soft', mission.accentSoft);
+    printableCard?.style.setProperty('--print-front', `linear-gradient(145deg, #fff, ${mission.surface}14)`);
+    printableCard?.style.setProperty('--print-back', `linear-gradient(145deg, ${mission.surface}, #082d42)`);
+    printableCard?.style.setProperty('--print-accent', mission.accent);
     window.setTimeout(() => {
       if (missionTitle) missionTitle.textContent = mission.title;
       if (missionText) missionText.textContent = mission.text;
       if (missionCount) missionCount.textContent = `Missão ${String(index + 1).padStart(2, '0')} de ${missions.length}`;
       if (cardFrontCopy) cardFrontCopy.textContent = `${mission.title} · Heal the World`;
+      if (cardFrontTag) cardFrontTag.textContent = mission.tag;
       if (cardBackLabel) cardBackLabel.textContent = `Minha escolha para hoje: ${mission.title}`;
+      if (cardBackTitle) cardBackTitle.textContent = mission.title;
       if (cardBackQuestion) cardBackQuestion.textContent = mission.text;
+      if (cardAction) cardAction.textContent = mission.action;
+      if (cardReason) cardReason.textContent = mission.reason;
       missionText?.classList.remove('changing');
     }, 180);
   };
@@ -233,8 +263,9 @@ const schema = {
   .mission-section { position:relative; overflow:hidden; background:radial-gradient(circle at 50% 55%,#0b5470,#04233d 45%,#031526 78%); }
   .mission-section::before { content:''; position:absolute; inset:0; opacity:.15; background-image:linear-gradient(#74e6d51a 1px,transparent 1px),linear-gradient(90deg,#74e6d51a 1px,transparent 1px); background-size:55px 55px; mask-image:radial-gradient(circle,#000,transparent 68%); }
   .mission-card { position:relative; width:min(100%,760px); min-height:300px; margin:3rem auto 2rem; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:3rem; border:1px solid #90f5dc35; border-radius:2rem; background:#ffffff0b; box-shadow:inset 0 1px #ffffff19,0 30px 100px #0005; backdrop-filter:blur(14px); }
-  .mission-card::before { content:''; position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(135deg,#fff3,transparent 35%,#53deb722); pointer-events:none; mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude; padding:1px; }
-  .mission-icon { color:#77eacb; font-size:2.2rem; text-shadow:0 0 25px #53deb7; }
+  .mission-card { --mission-accent:#62e6c5; --mission-accent-soft:#133a42; background:radial-gradient(circle at top, color-mix(in srgb, var(--mission-accent) 16%, transparent), transparent 52%), linear-gradient(180deg, color-mix(in srgb, var(--mission-accent-soft) 58%, #082d42 42%), #082d42); border-color: color-mix(in srgb, var(--mission-accent) 40%, transparent); }
+  .mission-card::before { content:''; position:absolute; inset:-1px; border-radius:inherit; background:linear-gradient(135deg, color-mix(in srgb, var(--mission-accent) 24%, #fff), transparent 35%, color-mix(in srgb, var(--mission-accent) 28%, transparent)); pointer-events:none; mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude; padding:1px; }
+  .mission-icon { color:var(--mission-accent); font-size:2.2rem; text-shadow:0 0 25px color-mix(in srgb, var(--mission-accent) 60%, transparent); }
   #mission-title { margin:1.2rem 0 .75rem; color:#9af3df; font-size:.76rem; font-weight:700; letter-spacing:.32em; text-transform:uppercase; }
   #mission-text { margin:0 0 1.25rem; max-width:44rem; color:#eefcf9; font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); line-height:1.05; transition:opacity .18s,transform .18s; }
   #mission-text.changing { opacity:0; transform:translateY(8px); }
@@ -269,16 +300,23 @@ const schema = {
   .print-section { background:linear-gradient(145deg,#041524,#092e43); }
   .print-grid { display:grid; gap:5rem; align-items:center; }
   .print-grid>div:first-child>p:not(.hope-label) { max-width:510px; margin-bottom:2rem; color:#aac0c8; line-height:1.8; }
-  .a6-card { display:grid; grid-template-columns:1fr 1fr; width:min(100%,620px); aspect-ratio:2.1/1; margin:auto; overflow:hidden; border-radius:1.2rem; color:#102d38; box-shadow:0 35px 80px #0006; }
+  .a6-card { --print-front:linear-gradient(145deg,#fff,#e8f5f1); --print-back:linear-gradient(145deg,#082d42,#082d42); --print-accent:#62e6c5; display:grid; grid-template-columns:1fr 1fr; width:min(100%,620px); aspect-ratio:2.1/1; margin:auto; overflow:hidden; border-radius:1.2rem; color:#102d38; box-shadow:0 35px 80px #0006; border:1px solid color-mix(in srgb, var(--print-accent) 20%, transparent); }
   .card-front,.card-back { position:relative; padding:clamp(1.2rem,3vw,2rem); }
-  .card-front { background:linear-gradient(145deg,#fff,#e8f5f1); }
+  .card-front { background:var(--print-front); }
   .card-front small { font-size:.45rem; letter-spacing:.18em; text-transform:uppercase; }
   .card-front h3 { margin:2rem 0 .7rem; font-family:'Cormorant Garamond',serif; font-size:clamp(1.8rem,4vw,2.8rem); line-height:.8; }
-  .card-front p,.card-back p { font-size:.65rem; }
-  .mini-earth { position:absolute; top:1rem; right:1rem; width:2.2rem; height:2.2rem; border-radius:50%; background:radial-gradient(circle at 35% 30%,#6cdfc0,#087185 50%,#052f4c); box-shadow:0 0 20px #38ccaa77; }
-  .card-back { background:#082d42; color:white; }
-  .write-line { display:block; height:1px; margin:1rem 0 1.5rem; background:#ffffff40; }
-  .qr-placeholder { position:absolute; right:1rem; bottom:1rem; display:grid; width:4rem; aspect-ratio:1; place-content:center; border:1px dashed #70d9c5; color:#70d9c5; text-align:center; }
+  .card-front p,.card-back p { font-size:.72rem; line-height:1.55; }
+  .mini-earth { position:absolute; top:1rem; right:1rem; width:2.2rem; height:2.2rem; border-radius:50%; background:radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--print-accent) 82%, #fff), color-mix(in srgb, var(--print-accent) 55%, #087185) 50%, #052f4c); box-shadow:0 0 20px color-mix(in srgb, var(--print-accent) 50%, transparent); }
+  .card-seal { display:flex; align-items:end; justify-content:space-between; gap:1rem; margin-top:1.6rem; padding-top:1rem; border-top:1px solid color-mix(in srgb, var(--print-accent) 20%, transparent); }
+  .card-seal span { color:#6a7480; font-size:.52rem; letter-spacing:.2em; text-transform:uppercase; }
+  .card-seal strong { color:color-mix(in srgb, var(--print-accent) 75%, #1d2d3a); font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; }
+  .card-back { background:var(--print-back); color:white; }
+  .card-back h4 { margin:.7rem 0 1.2rem; color:#fff; font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,3vw,2.2rem); line-height:1.05; }
+  .card-actions { display:grid; gap:1rem; margin-top:1.25rem; }
+  .card-actions div { padding:.85rem 0; border-top:1px solid #ffffff22; }
+  .card-actions span { display:block; margin-bottom:.25rem; color:#87ead3; font-size:.55rem; letter-spacing:.22em; text-transform:uppercase; }
+  .card-actions strong { color:#f0f8f8; font-size:.72rem; line-height:1.55; font-weight:500; }
+  .qr-placeholder { position:absolute; right:1rem; bottom:1rem; display:grid; width:4rem; aspect-ratio:1; place-content:center; border:1px dashed color-mix(in srgb, var(--print-accent) 85%, #70d9c5); color:color-mix(in srgb, var(--print-accent) 85%, #70d9c5); text-align:center; }
   .qr-placeholder span { font-weight:700; }
   .qr-placeholder small { font-size:.38rem; }
   .inspiration-section { background:#f4f0e7; color:#19353d; text-align:center; }
@@ -315,6 +353,7 @@ const schema = {
     .mission-card { min-height:270px; padding:2rem 1.2rem; }
     .a6-card { grid-template-columns:1fr; aspect-ratio:auto; max-width:330px; }
     .card-front,.card-back { min-height:280px; }
+    .card-seal { align-items:start; flex-direction:column; }
   }
   @media (prefers-reduced-motion:reduce) {
     .earth,.stars,.map-dots circle { animation:none; }
