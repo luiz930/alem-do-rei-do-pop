@@ -16,6 +16,15 @@ button, input, textarea { font: inherit; }
 button, input, textarea, a { outline-offset: 3px; }
 button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline: 2px solid var(--gold); }
 .shell { width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+.site-notice { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 1.25rem; background: rgb(4 9 15 / .72); backdrop-filter: blur(12px); }
+.site-notice[hidden] { display: none; }
+.site-notice__panel { width: min(100%, 42rem); border: 1px solid #c7a65b47; border-radius: 1.5rem; background: linear-gradient(160deg, rgb(16 27 45 / .98), rgb(6 17 30 / .98)); padding: clamp(1.5rem, 4vw, 2.5rem); box-shadow: 0 30px 90px rgb(0 0 0 / .45); }
+.site-notice__eyebrow { margin: 0; color: #7fd9ff; font-size: .7rem; font-weight: 700; letter-spacing: .3em; text-transform: uppercase; }
+.site-notice__title { margin: .85rem 0 1rem; font-family: Georgia, serif; font-size: clamp(2rem, 5vw, 3.5rem); line-height: .95; color: #fff; }
+.site-notice__text { margin: 0; color: #e6f0f5d1; font-size: 1rem; line-height: 1.8; }
+.site-notice__actions { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+.site-notice__button { border: 0; border-radius: 999px; background: linear-gradient(135deg, #53deb7, #23b990); padding: .85rem 1.25rem; color: #031b18; font-size: .9rem; font-weight: 700; cursor: pointer; }
+.site-notice__button:hover { filter: brightness(1.08); }
 .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid #ffffff1a; background: #08090cee; backdrop-filter: blur(16px); }
 .header-inner { min-height: 4rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .brand { color: var(--champagne); font-family: Georgia, serif; font-size: 1.35rem; text-decoration: none; }

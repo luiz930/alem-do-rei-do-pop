@@ -10,6 +10,16 @@
     <title>Mensagens de fãs | Além do Rei do Pop</title>
   </head>
   <body>
+    <div id="site-notice" class="site-notice" role="dialog" aria-modal="true" aria-labelledby="site-notice-title" aria-describedby="site-notice-description" hidden>
+      <div class="site-notice__panel">
+        <p class="site-notice__eyebrow">Aviso do projeto</p>
+        <h2 id="site-notice-title" class="site-notice__title">Site em construção</h2>
+        <p id="site-notice-description" class="site-notice__text">Este projeto ainda está recebendo ajustes. Algumas áreas podem ter bugs, partes incompletas ou interações que ainda não foram finalizadas.</p>
+        <div class="site-notice__actions">
+          <button id="site-notice-close" class="site-notice__button" type="button">Entendi</button>
+        </div>
+      </div>
+    </div>
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="./">Além do Rei do Pop</a>
@@ -82,5 +92,29 @@
 
     <footer class="site-footer"><div class="shell">Este é um site feito por fãs, sem afiliação oficial com o espólio, gravadoras, empresas ou representantes de Michael Jackson.</div></footer>
     <script src="./assets/messages.js" defer></script>
+    <script>
+      const noticeKey = 'site-notice-dismissed-v1';
+      const notice = document.querySelector('#site-notice');
+      const closeButton = document.querySelector('#site-notice-close');
+
+      if (notice && !localStorage.getItem(noticeKey)) {
+        notice.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+
+      const dismissNotice = () => {
+        localStorage.setItem(noticeKey, '1');
+        if (notice) notice.hidden = true;
+        document.body.style.overflow = '';
+      };
+
+      closeButton?.addEventListener('click', dismissNotice);
+      notice?.addEventListener('click', (event) => {
+        if (event.target === notice) dismissNotice();
+      });
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !notice?.hidden) dismissNotice();
+      });
+    </script>
   </body>
 </html>

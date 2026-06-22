@@ -24,10 +24,44 @@ const base = import.meta.env.BASE_URL;
     <meta property="og:image" content={new URL(`${base}og-abstract.svg`, Astro.site)} />
     <title>{title}</title>
   </head>
-  <body class:list={[theme === 'light' && 'reading']}>
+<body class:list={[theme === 'light' && 'reading']}>
     <a href="#conteudo" class="sr-only z-[100] bg-gold p-3 text-ink focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Pular para o conteúdo</a>
     <Header />
+    <div id="site-notice" class="site-notice" role="dialog" aria-modal="true" aria-labelledby="site-notice-title" aria-describedby="site-notice-description" hidden>
+      <div class="site-notice__panel">
+        <p class="site-notice__eyebrow">Aviso do projeto</p>
+        <h2 id="site-notice-title" class="site-notice__title">Site em construção</h2>
+        <p id="site-notice-description" class="site-notice__text">Este projeto ainda está recebendo ajustes. Algumas áreas podem ter bugs, partes incompletas ou interações que ainda não foram finalizadas.</p>
+        <div class="site-notice__actions">
+          <button id="site-notice-close" class="site-notice__button" type="button">Entendi</button>
+        </div>
+      </div>
+    </div>
     <main id="conteudo"><slot /></main>
     <Footer />
+    <script>
+      const noticeKey = 'site-notice-dismissed-v1';
+      const notice = document.querySelector<HTMLElement>('#site-notice');
+      const closeButton = document.querySelector<HTMLButtonElement>('#site-notice-close');
+
+      if (notice && !localStorage.getItem(noticeKey)) {
+        notice.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+
+      const dismissNotice = () => {
+        localStorage.setItem(noticeKey, '1');
+        if (notice) notice.hidden = true;
+        document.body.style.overflow = '';
+      };
+
+      closeButton?.addEventListener('click', dismissNotice);
+      notice?.addEventListener('click', (event) => {
+        if (event.target === notice) dismissNotice();
+      });
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !notice?.hidden) dismissNotice();
+      });
+    </script>
   </body>
 </html>
